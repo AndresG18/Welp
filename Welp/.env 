@@ -1,3 +1,0 @@
-SECRET_KEY=f36d125dbbd99f6c9ba107b50fde547c
-DATABASE_URL=sqlite:///dev.db
-SCHEMA=welp_schema
