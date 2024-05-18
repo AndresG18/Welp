@@ -1,4 +1,4 @@
-from app.models import db, Business_image, environment, SCHEMA
+from app.models import db, BusinessImage, environment, SCHEMA
 from sqlalchemy.sql import text
 
 def seed_business_images():
@@ -53,7 +53,7 @@ def seed_business_images():
         },
     ]
 
-    create_business_images = [Business_image(**business_image) for business_image in all_business_images]
+    create_business_images = [BusinessImage(**business_image) for business_image in all_business_images]
     add_business_images = [db.session.add(business_image) for business_image in create_business_images]
     db.session.commit()
     return create_business_images

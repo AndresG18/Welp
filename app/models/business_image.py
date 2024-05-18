@@ -8,7 +8,7 @@ class BusinessImage(db.Model):
         
     id = db.Column(db.Integer, primary_key=True)
     business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'), nullable=False)
-    URL = db.Column(db.String, nullable=False)
+    url = db.Column(db.String, nullable=False)
     
     business = db.relationship('Business', back_populates='images')
     
@@ -16,5 +16,5 @@ class BusinessImage(db.Model):
         return {
             'id': self.id,
             'business_id': self.business_id,
-            'URL': self.URL
+            'url': self.url
         }

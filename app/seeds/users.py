@@ -37,7 +37,7 @@ def seed_users():
             "email": "brian.smith@example.com", 
             "hashed_password": "password2", 
             "city": "Austin", 
-            "state": "TX"
+            "state": "TX",
             "profile_pic": "https://cdna.artstation.com/p/assets/images/images/066/630/454/large/easy-alter-kingquest-profile-picture-inspired-by-the-word-king-quest-brigh-bb1e2839-9070-4eae-a0a4-d73e0153495d.jpg?1693381640"
         },
         {

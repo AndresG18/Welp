@@ -3,7 +3,7 @@ from .users import seed_users, undo_users
 from .businesses import seed_businesses, undo_businesses
 from .reviews import seed_reviews, undo_reviews
 from .categories import seed_categories, undo_categories
-
+from .business_images import seed_business_images,undo_business_images
 from app.models.db import db, environment, SCHEMA
 
 # Creates a seed group to hold our commands
@@ -24,9 +24,10 @@ def seed():
         undo_reviews()
 
     seed_users()
-    seed_businesses()
-    seed_reviews()
     seed_categories()
+    seed_businesses()
+    seed_business_images()
+    seed_reviews()
     # Add other seed functions here
 
 
@@ -34,7 +35,8 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
-    undo_businesses()
-    undo_reviews()
     undo_categories()
+    undo_businesses()
+    undo_business_images()
+    undo_reviews()
     # Add other undo functions here

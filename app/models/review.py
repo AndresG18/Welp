@@ -12,7 +12,7 @@ class Review(db.Model):
     review = db.Column(db.String(200), nullable=False)
     star_rating = db.Column(db.Integer, nullable=False)
     
-    user = db.relationship('Users', back_populates='review')
+    user = db.relationship('User', back_populates='review')
     business = db.relationship('Business',back_populates='reviews')
     
     def to_dict(self):
