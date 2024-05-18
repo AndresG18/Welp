@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class BusinessImage(db.Model):
     __tablename__ = 'business_images'
@@ -7,7 +7,7 @@ class BusinessImage(db.Model):
         __table_args__ = {'schema': SCHEMA}
         
     id = db.Column(db.Integer, primary_key=True)
-    business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'), nullable=False)
+    business_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('businesses.id')), nullable=False)
     url = db.Column(db.String, nullable=False)
     
     business = db.relationship('Business', back_populates='images')
