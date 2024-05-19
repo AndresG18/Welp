@@ -19,8 +19,8 @@ class User(db.Model, UserMixin):
     state = db.Column(db.String(20))
     profile_pic = db.Column(db.String)
 
-    business = db.relationship('Business', back_populates='owner')
-    review = db.relationship('Review',back_populates='user')
+    business = db.relationship('Business', back_populates='owner',cascade="all, delete-orphan")
+    review = db.relationship('Review',back_populates='user',cascade="all, delete-orphan")
     
     @property
     def password(self):
@@ -31,7 +31,8 @@ class User(db.Model, UserMixin):
         self.hashed_password = generate_password_hash(password)
 
     def check_password(self, password):
-        return check_password_hash(self.password, password)
+        return self.password == password
+        # return check_password_hash(self.password, password)
 
     def to_dict(self):
         return {

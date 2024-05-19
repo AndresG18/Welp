@@ -19,5 +19,19 @@ class Business(db.Model):
     
     owner = db.relationship('User', back_populates='business')
     category = db.relationship('Category', back_populates='businesses')
-    images = db.relationship('BusinessImage', back_populates='business')
-    reviews = db.relationship('Review',back_populates='business')
+    images = db.relationship('BusinessImage', back_populates='business', cascade="all, delete-orphan")
+    reviews = db.relationship('Review',back_populates='business', cascade="all, delete-orphan")
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'owner_id': self.owner_id,
+            'category_id': self.category_id,
+            'name': self.name,
+            'address': self.address,
+            'city' : self.city,
+            'state' : self.state,
+            'hours' : self.hours,
+            'description' : self.description,
+            'preview_image' : self.preview_image
+        }
