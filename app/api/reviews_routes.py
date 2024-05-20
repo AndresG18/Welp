@@ -9,6 +9,12 @@ def authorize(owner_id):
     if owner_id != current_user.id: return {"message":"Forbidden"}, 403
     return None
 
+@reviews_routes.route('/<int:review_id>', methods=['GET'])
+def get_review(review_id):
+    review = Review.query.get(review_id)
+    if not review: return {"message": "Review not found"}, 404
+    return review.to_dict
+
 @reviews_routes.route('/current')
 @login_required
 def get_current_reviews():
