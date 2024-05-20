@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,IntegerField
+from wtforms import StringField,IntegerField, SelectField
 from wtforms.validators import DataRequired, Email, ValidationError,Length
 
 class BusinessForm(FlaskForm):
@@ -10,4 +10,5 @@ class BusinessForm(FlaskForm):
     state = StringField('State', validators=[DataRequired(), Length(min= 0 ,max= 20)])
     hours = StringField('Hours', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired(), Length(min= 0 ,max= 200)])
+    price = SelectField('Price', choices=[("Low", "Medium", "High")], validators=[DataRequired()])
     preview_image = StringField('Preview_image', validators=[DataRequired()])

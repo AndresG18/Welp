@@ -1,4 +1,4 @@
-from flask import Blueprint , request
+from flask import Blueprint , request, jsonify
 from flask_login import login_required, current_user
 from ..forms import BusinessForm,BusinessImageForm,ReviewForm
 from ..models import db,Business,BusinessImage,Review
@@ -9,10 +9,29 @@ def authorize(owner_id):
     if owner_id != current_user.id: return {"message":"Forbidden"}, 403
     return None
 
-@business_routes.route('/')
+@business_routes.route('')
 def get_all():
-    bizs = Business.query.all()
-    return {'businesses': [bus.to_dict() for bus in bizs]}
+    page = request.args.get('page', 1, type=int)
+    size = request.args.get('size', 10, type=int)
+    name = request.args.get('name', type=str)
+    location = request.args.get('location', type=str)
+    price = request.args.get('price')
+    category = request.args.get('category')
+
+    query = Business.query
+
+    if name:
+        query = query.filter(Business.name.ilike(f'%{name}%'))
+    if location:
+        query = query.filter((Business.city + ', ' + Business.state).ilike(f'%{location}%'))
+    if price:
+        query = query.filter_by(price = price)
+    if category:
+        query = query.filter(Business.category_id.ilike(f'%{category}'))
+
+    bizs = query.paginate(page=page, per_page=size, error_out=False)
+
+    return {'businesses': [bus.to_dict() for bus in bizs], 'page': page, 'size': size, 'total': bizs.total}
 
 @business_routes.route('/current')
 @login_required
@@ -43,24 +62,25 @@ def create():
             state = form.data['state'],
             hours = form.data['hours'],
             description = form.data['description'],
+            price = form.data['price'],
             preview_image = form.data['preview_image']
         )
-        db.session.add(new_biz) 
+        db.session.add(new_biz)
         db.session.commit()
         return new_biz.to_dict(), 201
-    else : 
+    else :
         return {"errors":form.errors}, 400
-    
-    
+
+
 @business_routes.route('/<int:bus_id>', methods=['PUT'])
 @login_required
 def edit(bus_id):
     biz = Business.query.get(bus_id)
     if not biz: return {"message": "Business not found"}, 404
-    
+
     is_auth = authorize(biz.owner_id)
     if is_auth : return is_auth
-    
+
     form = BusinessForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -70,26 +90,27 @@ def edit(bus_id):
         biz.city = form.data['city']
         biz.state = form.data['state']
         biz.hours = form.data['hours']
-        biz.description = form.data['description']
+        biz.description = form.data['description'],
+        biz.price = form.data['price'],
         biz.preview_image = form.data['preview_image']
         db.session.commit()
         return biz.to_dict(), 200
     else:
         return {"errors": form.errors}, 400
-    
+
 @business_routes.route('/<int:bus_id>', methods=['DELETE'])
 @login_required
 def delete(bus_id):
     biz = Business.query.get(bus_id)
     if not biz: return {"message": "Business not found"}, 404
-    
+
     is_auth = authorize(biz.owner_id)
     if is_auth  : return is_auth
-    
+
     db.session.delete(biz)
     db.session.commit()
     return {"message": "Successfully deleted"}, 200
-    
+
 @business_routes.route('/<int:bus_id>/images')
 @login_required
 def get_images(bus_id):
@@ -100,7 +121,7 @@ def get_images(bus_id):
 @login_required
 def create_image(bus_id):
     biz = Business.query.get(bus_id)
-    
+
     is_auth = authorize(biz.owner_id)
     if is_auth : return is_auth
     form = BusinessImageForm()
@@ -115,7 +136,7 @@ def create_image(bus_id):
         return new_img.to_dict()
     else:
         return {"errors": form.errors}, 400
-    
+
 @business_routes.route('/<int:bus_id>/reviews')
 def get_reviews(bus_id):
     biz = Business.query.get(bus_id)
@@ -142,6 +163,3 @@ def create_review(bus_id):
         return new_review.to_dict(), 201
     else:
         return {"errors": form.errors}, 400
-    
-
-
