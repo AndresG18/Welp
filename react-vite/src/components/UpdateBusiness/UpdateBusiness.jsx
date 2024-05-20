@@ -6,7 +6,7 @@ import {getBusinessByIdThunk, updateBusinessThunk} from '../../store/businesses'
 
 function UpdateBusiness(){
     const redirect = useNavigate();
-    const spot = useSelector(state => state.businesses.business.busById)
+    const bus = useSelector(state => state.businesses.business.busById)
 
     const {busId} = useParams()
     // const [isLoaded, setIsLoaded] = useState(false)
