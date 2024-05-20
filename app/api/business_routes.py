@@ -27,7 +27,7 @@ def get_all():
     if price:
         query = query.filter_by(price = price)
     if category:
-        query = query.filter(Business.category_id.ilike(f'%{category}'))
+        query = query.filter_by(category_id=category)
 
     bizs = query.paginate(page=page, per_page=size, error_out=False)
 
