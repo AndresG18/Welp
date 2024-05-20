@@ -13,6 +13,7 @@ export const getImagesByBusinessIdThunk = (businessId) => async (dispatch) => {
     return data;
 };
 
+const initialState = {};
 const imagesReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_IMAGES_BY_BUSINESS_ID:

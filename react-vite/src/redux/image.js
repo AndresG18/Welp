@@ -19,7 +19,7 @@ const getImageById = (image) => ({
   });
 
 export const getImageByIdThunk = (imageId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/images/${imageId}`);
+    const response = await fetch(`/api/images/${imageId}`);
     const data = await response.json();
     if (response.ok) dispatch(getImageById(data));
     return data;
@@ -44,7 +44,7 @@ export const deleteImageThunk = (imageId) => async (dispatch) => {
   return data
 };
 
-// Reducer
+
 const initialState = {};
 
 const imageReducer = (state = initialState, action) => {
@@ -54,7 +54,7 @@ const imageReducer = (state = initialState, action) => {
     case CREATE_IMAGE:
       return { ...state, image: action.image };
     case DELETE_IMAGE:
-      return { ...state, image: action.image };;
+      return { ...state, image: action.image };
     default:
       return state;
   }
