@@ -46,6 +46,7 @@ export const editBusinessThunk = (id,business) => async (dispatch) =>{
         method: 'PUT',
         body:JSON.stringify(business)
     });
+    const data = await response.json()
     if (response.ok) dispatch(editBusiness(data));
     return data;
 }
@@ -54,6 +55,7 @@ export const deleteBusinessThunk = (id) => async (dispatch) =>{
     const response = await fetch(`api/bus/${id}`,{
         method: 'DELETE',
     });
+    const data = await response.json()
     if (response.ok) dispatch(deleteBusiness(data));
     return data;
 }
