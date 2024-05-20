@@ -11,7 +11,7 @@ import OpenModalButton from '../OpenModalButton';
 function OneBusiness(){
     const [isLoaded, setIsLoaded] = useState(false);
     const dispatch = useDispatch();
-    const {spotId} = useParams();
+    const {busId} = useParams();
     const bus = useSelector(state => state.bizs.oneBusiness.busById);       // var names, as well as nested object path. do the same for following lines
     const reviews = useSelector(state => state.reviews.reviews);            
     const sessionUser = useSelector(state => state.session.user);
