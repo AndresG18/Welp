@@ -1,29 +1,29 @@
 import {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getBusinessByIdThunk} from '../../store/businesses';            // check var/func name
-import {fetchReviews} from '../../store/reviews';           // check var/func name
+import {getBusinessByIdThunk} from '../../redux/business';            // check var/func name
+import {getReviewsByBusinessIdThunk} from '../../redux/reviews';           // check var/func name
 import {useModal} from "../../context/Modal";               // optional modals???
-import ReviewFormModal from "../ReviewFormModal";
-import DeleteReviewModal from "../DeleteReviewModal";
-import OpenModalButton from '../OpenModalButton';
+// import DeleteReviewModal from "../DeleteReviewModal";
+// import OpenModalButton from '../OpenModalButton';
 
 function OneBusiness(){
     const [isLoaded, setIsLoaded] = useState(false);
     const dispatch = useDispatch();
     const {busId} = useParams();
-    const bus = useSelector(state => state.bizs.oneBusiness.busById);       // var names, as well as nested object path. do the same for following lines
-    const reviews = useSelector(state => state.reviews.reviews);            
+    const bus = useSelector(state => state.business);       // var names, as well as nested object path. do the same for following lines
+    const reviews = useSelector(state => state.reviews);            
     const sessionUser = useSelector(state => state.session.user);
 
     const {setModalContent} = useModal();
 
-    // console.log('Reviews from useSelector-----> ', reviews)
+    console.log('Business from useSelector-----> ', bus)
+    console.log('TEST-----------------------')
 
     useEffect(() => {
         async function getBusData(){
            await dispatch(getBusinessByIdThunk(busId));
-           await dispatch(fetchReviews(busId));
+           await dispatch(getReviewsByBusinessIdThunk(busId));
            setIsLoaded(true);
         }
         getBusData();
@@ -33,29 +33,22 @@ function OneBusiness(){
     //     alert('Feature coming soon')
     // }
 
-    const handleReviewModal = () => {
-        setModalContent(<ReviewFormModal busId={busId}/>)
-    }
-
-
     return(
         <div>
             {isLoaded && bus &&
             
                 <div id='busbyid'>
-                    <h1 className="bus-name" style={{fontSize: '40px'}}>{bus.name}</h1>
-                    <h3 className="bus-location" style={{fontSize: '28px'}}>{bus.city}, {bus.state}</h3>
+                    <div className='bus-images-bar'>
+                        <img className='bus-main-pic' style={{height: '600px', width: '500px'}}src={bus.BusinessImages[0]?.url} alt="main-pic"/>
+                        <img className="bus-quad-pic" style={{height: '250px', width: 'auto'}} src={bus.BusinessImages[1]?.url || '/chicken-no-img.jpg'} alt="small-1" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: 'auto'}} src={bus.BusinessImages[2]?.url || '/chicken-no-img.jpg'} alt="small-1" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: 'auto'}} src={bus.BusinessImages[3]?.url || '/chicken-no-img.jpg'} alt="small-1" />
+                    </div>
 
-                    <div className='bus-imgs-block'>
-                        <div className='bus-main-pic-container'>
-                            <img className='bus-main-pic' style={{height: '600px', width: '500px'}}src={bus.BusinessImages[0]?.url} alt="main-pic"/>
-                        </div>
-                        <div className='bus-quad-pics-container'>
-                            <img className="bus-quad-pic" style={{height: '250px', width: 'auto'}} src={bus.BusinessImages[1]?.url || '/chicken-no-img.jpg'} alt="small-1" />
-                            <img className="bus-quad-pic" style={{height: '250px', width: 'auto'}} src={bus.BusinessImages[2]?.url || '/chicken-no-img.jpg'} alt="small-1" />
-                            <img className="bus-quad-pic" style={{height: '250px', width: 'auto'}} src={bus.BusinessImages[3]?.url || '/chicken-no-img.jpg'} alt="small-1" />
-                            <img className="bus-quad-pic" style={{height: '250px', width: 'auto'}} src={bus.BusinessImages[4]?.url || '/chicken-no-img.jpg'} alt="small-1" />
-                        </div>
+                    <div className="bus-title-block">
+                        <h1 className="bus-name" style={{fontSize: '40px'}}>{bus.name}</h1>
+                        <p className="bus-star-reviews">{bus.avgStarRating} ({bus.totalreviews})</p>
+                        <p className="bus-hours">{bus.hours}</p>
                     </div>
 
                     <div className="bus-page-lower">
@@ -93,8 +86,8 @@ function OneBusiness(){
                                         <p style={{fontSize: '25px'}}>Comments: {review.review}</p>
                                         <p style={{fontSize: '25px'}}>Rating: {review.stars}</p>
                                         
-                                        {sessionUser && review.userId === sessionUser.id && 
-                                        (<OpenModalButton className='delete-bus' buttonText='Delete' modalComponent={<DeleteReviewModal busId={busId} reviewId={review.id}/>}/>)}
+                                        {/* {sessionUser && review.userId === sessionUser.id && 
+                                        (<OpenModalButton className='delete-bus' buttonText='Delete' modalComponent={<DeleteReviewModal busId={busId} reviewId={review.id}/>}/>)} */}
                                         
                                         <p>____________________________________________________</p>
                                     </div>
