@@ -74,7 +74,7 @@ function Footer() {
               HTML
             </div>
             <div className='tech-texts'>
-              <img src={pythonIcon} alt="" className='icon-sizing' />
+              <img src={cssIcon} alt="" className='icon-sizing' />
               CSS
             </div>
 

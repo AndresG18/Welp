@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { useModal } from '../../context/Modal';
 import { useDispatch, } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -6,12 +6,12 @@ import { deleteBusinessThunk } from '../../redux/business';
 import './DeleteBusiness.css';
 
 
-export default function DeleteBusiness({busId}) {
+export default function DeleteBusiness({ busId }) {
 
-  const {closeModal} = useModal()
+  const { closeModal } = useModal()
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const handleSubmit = async() => {
+  const handleSubmit = async () => {
     await dispatch(deleteBusinessThunk(busId))
     navigate('/bus/current')
     closeModal()

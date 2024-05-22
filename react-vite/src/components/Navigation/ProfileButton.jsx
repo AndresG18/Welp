@@ -41,7 +41,6 @@ function ProfileButton() {
     dispatch(thunkLogout());
     navigate('/')
     closeMenu();
-    red
   };
 
   const manageBus = (e) => {

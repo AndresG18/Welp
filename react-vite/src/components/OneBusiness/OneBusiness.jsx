@@ -179,7 +179,12 @@ function OneBusiness() {
                                             {
                                                 sessionUser &&
                                                 obj.user_id === sessionUser.id &&
-                                                (<OpenModalButton className='delete-review' buttonText='Delete' modalComponent={<DeleteReview busId={busId} reviewId={obj.id} />} />)
+                                                (<div>
+                                                    <OpenModalButton buttonText='Delete' modalComponent={<DeleteReview busId={busId} reviewId={obj.id} />} />
+
+                                                    <button onClick={() => redirect(`/bus/${busId}/reviews/${obj.id}/edit`)} className="edit-delete-button">Edit</button>
+                                                </div>)
+
                                             }
                                             <p>______________________________________</p>
                                         </div>

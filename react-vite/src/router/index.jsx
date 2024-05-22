@@ -9,6 +9,7 @@ import BusinessForm from '../components/BusinessForm/BusinessForm'
 import ReviewsForm from '../components/ReviewsForm/ReviewForm'
 import BusinessManage from '../components/BusinessManage';
 import UpdateBusiness from '../components/UpdateBusiness';
+import UpdateReview from '../components/UpdateReview/UpdateReview';
 
 export const router = createBrowserRouter([
   {
@@ -52,7 +53,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "bus/:busId/reviews/:reviewId/edit",
-        element: <ReviewsForm />
+        element: < UpdateReview />
       },
       {
         path: "*",

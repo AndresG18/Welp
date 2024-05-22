@@ -1,4 +1,5 @@
 import { useModal } from '../../context/Modal';
+import "./OpenModalButton.css"
 
 function OpenModalButton({
   modalComponent, // component to render inside the modal
@@ -14,7 +15,7 @@ function OpenModalButton({
     if (typeof onButtonClick === "function") onButtonClick();
   };
 
-  return <button style={{height: '30px', width: '100px'}} onClick={onClick}>{buttonText}</button>;
+  return <button onClick={onClick} className='edit-delete-button'>{buttonText}</button>;
 }
 
 export default OpenModalButton;

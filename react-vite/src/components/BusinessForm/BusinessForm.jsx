@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { createBusinessThunk } from '../../redux/business'
 import { editBusinessThunk } from '../../redux/business';
-import React from 'react';
+// import React from 'react';
 const BusinessForm = ({ bus }) => {
-    console.log(bus,'FROM THE FORM')
+    console.log(bus, 'FROM THE FORM')
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [category_id, setCategoryId] = useState(bus ? bus?.category_id : '')
@@ -16,7 +16,7 @@ const BusinessForm = ({ bus }) => {
     const [hours, setHours] = useState(bus ? bus?.hours : '');
     const [description, setDescription] = useState(bus ? bus?.description : '');
     const [previewImage, setPreviewImage] = useState(bus ? bus?.preview_image : '');
-    const [price, setPrice] = useState(bus? bus?.price_range : '')
+    const [price, setPrice] = useState(bus ? bus?.price_range : '')
     const [errors, setErrors] = useState({});
 
     const user = useSelector(state => state.session.user)
@@ -30,21 +30,21 @@ const BusinessForm = ({ bus }) => {
         e.preventDefault()
         const busObj = {
             name,
-            category_id ,
+            category_id,
             address,
-            city ,
-            state ,
-            hours ,
+            city,
+            state,
+            hours,
             description,
             price,
-            preview_image:previewImage
+            preview_image: previewImage
         }
         console.log()
-        const data = bus ? await dispatch(editBusinessThunk(bus.id,busObj)) : await dispatch(createBusinessThunk(busObj))
-        if (data.errors){
+        const data = bus ? await dispatch(editBusinessThunk(bus.id, busObj)) : await dispatch(createBusinessThunk(busObj))
+        if (data.errors) {
             console.log(data)
             setErrors(data.errors)
-        }else{
+        } else {
             navigate(`/bus/${data.id}`)
         }
 
