@@ -52,6 +52,7 @@ class Business(db.Model):
             'hours' : self.hours,
             'description' : self.description,
             'price': self.price_range(),
+            'price_range':self.price,
             'preview_image' : self.preview_image,
             'rating': self.get_average_rating()
         }

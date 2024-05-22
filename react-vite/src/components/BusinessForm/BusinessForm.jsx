@@ -5,17 +5,18 @@ import { createBusinessThunk } from '../../redux/business'
 import { editBusinessThunk } from '../../redux/business';
 import React from 'react';
 const BusinessForm = ({ bus }) => {
+    console.log(bus,'FROM THE FORM')
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [category_id, setCategoryId] = useState(bus ? bus.category_id : '')
-    const [name, setName] = useState(bus ? bus.name : '');
-    const [address, setAddress] = useState(bus ? bus.address : '');
-    const [city, setCity] = useState(bus ? bus.city : '');
-    const [state, setState] = useState(bus ? bus.state : '');
-    const [hours, setHours] = useState(bus ? bus.hours : '');
-    const [description, setDescription] = useState(bus ? bus.description : '');
-    const [previewImage, setPreviewImage] = useState(bus ? bus.previewImage : '');
-    const [price, setPrice] = useState(bus? bus.price : '')
+    const [category_id, setCategoryId] = useState(bus ? bus?.category_id : '')
+    const [name, setName] = useState(bus ? bus?.name : '');
+    const [address, setAddress] = useState(bus ? bus?.address : '');
+    const [city, setCity] = useState(bus ? bus?.city : '');
+    const [state, setState] = useState(bus ? bus?.state : '');
+    const [hours, setHours] = useState(bus ? bus?.hours : '');
+    const [description, setDescription] = useState(bus ? bus?.description : '');
+    const [previewImage, setPreviewImage] = useState(bus ? bus?.preview_image : '');
+    const [price, setPrice] = useState(bus? bus?.price_range : '')
     const [errors, setErrors] = useState({});
 
     const user = useSelector(state => state.session.user)
@@ -25,6 +26,7 @@ const BusinessForm = ({ bus }) => {
     })
 
     const handleSubmit = async (e) => {
+        setErrors({})
         e.preventDefault()
         const busObj = {
             name,
@@ -35,16 +37,19 @@ const BusinessForm = ({ bus }) => {
             hours ,
             description,
             price,
-            preview_image:previewImage,
+            preview_image:previewImage
         }
         console.log()
         const data = bus ? await dispatch(editBusinessThunk(bus.id,busObj)) : await dispatch(createBusinessThunk(busObj))
         if (data.errors){
-
+            console.log(data)
             setErrors(data.errors)
+        }else{
+            navigate(`/bus/${data.id}`)
         }
+
         console.log(Object.values(errors).length > 0)
-        console.log(errors.name)
+        console.log(errors)
     }
 
     return (

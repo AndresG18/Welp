@@ -8,6 +8,7 @@ import OneBusiness from '../components/OneBusiness/OneBusiness'
 import BusinessForm from '../components/BusinessForm/BusinessForm'
 import ReviewsForm from '../components/ReviewsForm/ReviewForm'
 import BusinessManage from '../components/BusinessManage';
+import UpdateBusiness from '../components/UpdateBusiness';
 
 export const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/bus/:busId/edit",
-        element: <BusinessForm />
+        element: <UpdateBusiness />
       },
       {
         path: "bus/:busId/reviews/new",

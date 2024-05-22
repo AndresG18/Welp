@@ -28,6 +28,7 @@ export const getImageByIdThunk = (imageId) => async (dispatch) => {
 export const createImageThunk = (id, imageData) => async (dispatch) => {
   const response = await fetch(`/api/bus/${id}/images/new`, {
     method: 'POST',
+    headers:{ "Content-Type": "application/json" },
     body: JSON.stringify(imageData),
   });
   const data = await response.json();

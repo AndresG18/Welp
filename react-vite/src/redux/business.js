@@ -37,14 +37,15 @@ export const createBusinessThunk = (business) => async (dispatch) => {
     headers:{ "Content-Type": "application/json" },
     body: JSON.stringify(business)
   });
-  if (response.ok) dispatch(createBusiness(data));
   const data = await response.json();
+  if (response.ok) dispatch(createBusiness(data));
   return data;
 };
 
 export const editBusinessThunk = (id,business) => async (dispatch) =>{
     const response = await fetch(`/api/bus/${id}`,{
         method: 'PUT',
+        headers:{ "Content-Type": "application/json" },
         body:JSON.stringify(business)
     });
     const data = await response.json()

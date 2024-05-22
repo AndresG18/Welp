@@ -23,10 +23,10 @@ function OneBusiness(){
 
     // const {setModalContent} = useModal();
 
-    console.log('BUSINESS -------------> ', bus)
-    console.log('REVIEWS -------------->', reviews)
-    console.log('USER ---------------->', sessionUser)
-    console.log('IMAGES -------------->', images)
+    // console.log('BUSINESS -------------> ', bus)
+    // console.log('REVIEWS -------------->', reviews)
+    // console.log('USER ---------------->', sessionUser)
+    // console.log('IMAGES -------------->', images)
 
     useEffect(() => {
         async function getBusData(){
@@ -97,9 +97,9 @@ function OneBusiness(){
                         ))} */}
 
                         <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={bus.business.preview_image} alt="business-image" />
-                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[0].url} alt="business-image" />
-                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[1].url} alt="business-image" />
-                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[2].url} alt="business-image" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images?.BusinessImages?.[0]?.url ?? null} alt="business-image" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images?.BusinessImages?.[1]?.url ?? null} alt="business-image" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images?.BusinessImages?.[2]?.url ?? null} alt="business-image" />
                     </div>
 
                     <div className="bus-title-block">
