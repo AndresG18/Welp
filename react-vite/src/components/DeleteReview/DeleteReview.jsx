@@ -17,6 +17,7 @@ export default function DeleteReview({busId, reviewId}) {
     await dispatch(deleteReviewByIdThunk(reviewId))
     await dispatch(getBusinessByIdThunk(busId))
     await dispatch(getReviewsByBusinessIdThunk(busId))
+    closeModal()
   }
 
   return (
