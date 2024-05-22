@@ -14,7 +14,6 @@ function OneBusiness() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [userList, setUserList] = useState([]);
     // const [currentIndex, setCurrentIndex] = useState(0);
-    const [userList, setUserList] = useState([]);
     const dispatch = useDispatch();
     const { busId } = useParams();
     const bus = useSelector(state => state.business.business);
@@ -166,6 +165,14 @@ function OneBusiness() {
                                     return (
                                         <div className="all-reviews" key={obj.id}>
                                             <p>{user ? user.username : null}</p>
+                                            <p>{obj.star_rating}</p>
+                                            <div className='stars'>
+                                            <div className={obj.star_rating > 0 ? 'star active' : 'star'} />
+                                            <div className={obj.star_rating > 1 ? 'star active' : 'star'} />
+                                            <div className={obj.star_rating > 2 ? 'star active' : 'star'} />
+                                            <div className={obj.star_rating > 3 ? 'star active' : 'star'} />
+                                            <div className={obj.star_rating > 4 ? 'star active' : 'star'} />
+                                            </div>
                                             {user && <img style={{ height: '100px', width: '100px' }} src={user ? user.profile_pic : null} alt="reviewer-pic" />}
                                             <p>{obj.review}</p>
                                             {
