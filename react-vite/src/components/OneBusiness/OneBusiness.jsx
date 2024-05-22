@@ -17,7 +17,7 @@ function OneBusiness(){
     const bus = useSelector(state => state.business.business);     
     const reviews = useSelector(state => state.reviews.reviews);            
     const sessionUser = useSelector(state => state.session.user);
-    const images = useSelector(state => state.images);
+    const images = useSelector(state => state.images.images);
     const redirect = useNavigate();
 
     // const {setModalContent} = useModal();
@@ -31,7 +31,7 @@ function OneBusiness(){
         async function getBusData(){
            await dispatch(getBusinessByIdThunk(busId));
            await dispatch(getReviewsByBusinessIdThunk(busId));
-        //    await dispatch(getImagesByBusinessIdThunk(busId));
+           await dispatch(getImagesByBusinessIdThunk(busId));
            setIsLoaded(true);
         }
         getBusData();
@@ -49,6 +49,25 @@ function OneBusiness(){
         redirect(`/bus/${busId}/reviews/new`)
     }
 
+    const phoneArr = [
+        '818-111-1111',
+        '202-495-2222',
+        '213-304-3333',
+        '416-775-4444',
+        '481-235-5555',
+        '308-952-6666',
+        '556-954-7777',
+        '626-800-8888',
+        '818-616-9999',
+        '818-321-0000',
+        '909-751-1234',
+        '213-954-5678',
+        '818-493-9012',
+        '466-118-3456',
+        '312-418-7890',
+        '781-731-1234'
+    ]
+
     return(
         <div>
             {isLoaded && bus &&
@@ -56,10 +75,10 @@ function OneBusiness(){
                 <div id='busbyid'>
                     <div className='bus-images-bar'>
                         {/* <img className='bus-main-pic' style={{height: '600px', width: '500px'}}src={bus.business.BusinessImages[0]?.url || '/default-image.jpg'} alt="small-1"/> */}
-                        <img className="bus-quad-pic" style={{height: '250px', width: 'auto'}} src={bus.business.preview_image} alt="business-image" />
-                        <img className="bus-quad-pic" style={{height: '250px', width: 'auto'}} src='' alt="business-image" />
-                        <img className="bus-quad-pic" style={{height: '250px', width: 'auto'}} src='' alt="business-image" />
-                        <img className="bus-quad-pic" style={{height: '250px', width: 'auto'}} src='' alt="business-image" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={bus.business.preview_image} alt="business-image" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[0].url} alt="business-image" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[1].url} alt="business-image" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[2].url} alt="business-image" />
                     </div>
 
                     <div className="bus-title-block">
@@ -92,36 +111,34 @@ function OneBusiness(){
                         </div>
 
                         <div className="info-box-right">
-                            <h3>Something something</h3>
-                            <h4>Something something</h4>
-                            <h4>{bus.business.address}</h4>
-                            <h4>{bus.business.city}, {bus.business.state}</h4>
+                            <h3 className="info-box-1" style={{fontSize: '30px'}}>{bus.business.category_name}</h3>
+                            <h4 className="info-box-2" style={{fontSize: '22px'}}>{phoneArr[bus.business.id - 1]}</h4>
+                            <h4 className="info-box-3" style={{fontSize: '22px'}}>{bus.business.address}</h4>
+                            <h4 className="info-box-4" style={{fontSize: '22px'}}>{bus.business.city}, {bus.business.state}</h4>
                         </div>
-
-                    </div>
-
-                    <div className="lower-left-container">
                         
                         <div className="lower-left-bus-info">
-                            <h2>From this business</h2>
-                            <h3>{bus.business.description}</h3>
-                        </div>
+                            <div className="bus-description">
+                                <h2>From this business</h2>
+                                <h3>{bus.business.description}</h3>
+                            </div>
 
-                        <div className="lower-left-bus-reviews">
-                            <h2>Reviews</h2>
-                            {reviews.reviews && reviews.reviews.map(obj => (
-                                <div className="all-reviews" key={obj.id}>
-                                    <img style={{height: '100px', width: '100px'}} src={obj.user_id.profile_pic} alt="reviewer-pic"/>
-                                    <p>{obj.review}</p>
-                                    {
-                                        sessionUser && 
-                                        obj.user_id === sessionUser.id && 
-                                        (<OpenModalButton className='delete-review' buttonText='Delete' modalComponent={<DeleteReview busId={busId} reviewId={obj.id}/>}/>)
-                                    }
-                                    <p>______________________________________</p>
-                                </div>
-                            ))}
-                        </div>
+                            <div className="lower-left-bus-reviews">
+                                <h2>Reviews</h2>
+                                {reviews.reviews && reviews.reviews.map(obj => (
+                                    <div className="all-reviews" key={obj.id}>
+                                        <img style={{height: '100px', width: '100px'}} src={obj.user_id.profile_pic} alt="reviewer-pic"/>
+                                        <p>{obj.review}</p>
+                                        {
+                                            sessionUser && 
+                                            obj.user_id === sessionUser.id && 
+                                            (<OpenModalButton className='delete-review' buttonText='Delete' modalComponent={<DeleteReview busId={busId} reviewId={obj.id}/>}/>)
+                                        }
+                                        <p>______________________________________</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>   
                     </div>
                 </div>
             }

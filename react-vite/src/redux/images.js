@@ -7,7 +7,7 @@ const getImagesByBusinessId = (images) => ({
 });
 
 export const getImagesByBusinessIdThunk = (businessId) => async (dispatch) => {
-    const response = await fetch(`/api/businesses/${businessId}/images`);
+    const response = await fetch(`/api/bus/${businessId}/images`);
     const data = await response.json();
     if (response.ok) dispatch(getImagesByBusinessId(data));
     return data;
