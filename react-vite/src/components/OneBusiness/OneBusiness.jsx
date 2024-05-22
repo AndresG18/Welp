@@ -12,6 +12,7 @@ import './OneBusiness.css';
 
 function OneBusiness(){
     const [isLoaded, setIsLoaded] = useState(false);
+    // const [currentIndex, setCurrentIndex] = useState(0);
     const dispatch = useDispatch();
     const {busId} = useParams();
     const bus = useSelector(state => state.business.business);     
@@ -36,6 +37,16 @@ function OneBusiness(){
         }
         getBusData();
     }, [dispatch, busId, isLoaded]);
+
+
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.BusinessImages.length); // Move to the next image
+    //     }, 5000); // Change image every 5 seconds
+    
+    //     return () => clearInterval(interval); // Clear interval on component unmount
+    //   }, [images.BusinessImages.length]);
+
 
     // const reserveClick = () => {
     //     alert('Feature coming soon')
@@ -74,7 +85,17 @@ function OneBusiness(){
             
                 <div id='busbyid'>
                     <div className='bus-images-bar'>
-                        {/* <img className='bus-main-pic' style={{height: '600px', width: '500px'}}src={bus.business.BusinessImages[0]?.url || '/default-image.jpg'} alt="small-1"/> */}
+
+                        {/* {(images.BusinessImages || []).map((image, index) => (
+                            <img 
+                                key={index}
+                                className='bus-quad-pic'
+                                style={{ height: '250px', width: '480px', display: index === currentIndex ? 'block' : 'none' }}
+                                src={image.url}
+                                alt='business-image'
+                            />
+                        ))} */}
+
                         <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={bus.business.preview_image} alt="business-image" />
                         <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[0].url} alt="business-image" />
                         <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[1].url} alt="business-image" />
@@ -82,12 +103,12 @@ function OneBusiness(){
                     </div>
 
                     <div className="bus-title-block">
-                        <h1 className="bus-name" style={{fontSize: '40px'}}>{bus.business.name}</h1>
-                        <div className="review-line">
+                        <h1 className="bus-name" style={{fontSize: '50px'}}>{bus.business.name}</h1>
+                        <div className="review-line" style={{fontSize: '20px'}}>
                             <img className="review-star" src="" alt="star"/>
                             <p className="bus-star-reviews">{bus.business.rating} ({reviews.reviews ? reviews.reviews.length : 0} reviews)</p>
                         </div>
-                        <p className="bus-hours">{bus.business.hours}</p>
+                        <p className="bus-hours" style={{fontSize: '20px'}}>{bus.business.hours}</p>
                     </div>
 
                     <div className="mid-section">
