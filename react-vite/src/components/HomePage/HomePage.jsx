@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+// import { useDispatch } from "react-redux";
 import image1 from './photo1.jpg'
 import image2 from './photo2.jpg'
 import image3 from './photo3.jpg'
@@ -12,7 +12,6 @@ import './HomePage.css'
 const backImage = [image1, image2, image3, image4]
 
 export default function HomePage() {
-  const dispatch = useDispatch()
   const navigate = useNavigate()
   const [backImg, setBackImg] = useState(0)
 
