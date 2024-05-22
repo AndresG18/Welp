@@ -13,3 +13,12 @@
   margin-bottom: 10px;
   color: gray;
 }
+
+.collapse-fields {
+  display: flex;
+  gap: 10px;
+}
+
+#smaller-input {
+  width: 150px;
+}

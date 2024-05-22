@@ -7,6 +7,7 @@ import Businesses from '../components/Businesses/Businesses';
 import OneBusiness from '../components/OneBusiness/OneBusiness'
 import BusinessForm from '../components/BusinessForm/BusinessForm'
 import ReviewsForm from '../components/ReviewsForm/ReviewForm'
+import BusinessManage from '../components/BusinessManage';
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: "signup",
         element: <SignupFormPage />,
+      },
+      {
+        path: "/bus/current",
+        element: <BusinessManage />
       },
       {
         path: "/bus",
