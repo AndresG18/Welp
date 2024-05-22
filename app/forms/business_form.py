@@ -10,5 +10,5 @@ class BusinessForm(FlaskForm):
     state = StringField('State', validators=[DataRequired(), Length(min= 0 ,max= 20)])
     hours = StringField('Hours', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired(), Length(min= 0 ,max= 200)])
-    price = SelectField('Price', choices=[("Low", "Medium", "High")], validators=[DataRequired()])
+    price = StringField('Price', validators=[DataRequired()])
     preview_image = StringField('Preview_image', validators=[DataRequired()])

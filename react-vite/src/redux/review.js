@@ -32,8 +32,8 @@ export const getReviewByIdThunk = (id) => async (dispatch) => {
 };
 
 
-  export const createReviewThunk = (review) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/new`,{
+  export const createReviewThunk = (id,review) => async (dispatch) => {
+    const response = await fetch(`/api/bus/${id}/reviews/new`,{
         method:'POST',
         body: JSON.stringify(review)
     });

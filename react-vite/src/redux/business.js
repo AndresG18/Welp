@@ -34,15 +34,16 @@ export const getBusinessByIdThunk = (id) => async (dispatch) => {
 export const createBusinessThunk = (business) => async (dispatch) => {
   const response = await fetch('/api/bus/new', {
     method: 'POST',
-    body: JSON.stringify(business),
+    headers:{ "Content-Type": "application/json" },
+    body: JSON.stringify(business)
   });
-  const data = await response.json();
   if (response.ok) dispatch(createBusiness(data));
+  const data = await response.json();
   return data;
 };
 
 export const editBusinessThunk = (id,business) => async (dispatch) =>{
-    const response = await fetch(`api/bus/${id}`,{
+    const response = await fetch(`/api/bus/${id}`,{
         method: 'PUT',
         body:JSON.stringify(business)
     });
@@ -52,7 +53,7 @@ export const editBusinessThunk = (id,business) => async (dispatch) =>{
 }
 
 export const deleteBusinessThunk = (id) => async (dispatch) =>{
-    const response = await fetch(`api/bus/${id}`,{
+    const response = await fetch(`/api/bus/${id}`,{
         method: 'DELETE',
     });
     const data = await response.json()
