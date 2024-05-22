@@ -1,7 +1,7 @@
 from flask import Blueprint , request, jsonify
 from flask_login import login_required, current_user
 from ..forms import BusinessForm,BusinessImageForm,ReviewForm
-from ..models import db,Business,BusinessImage,Review
+from ..models import db,Business,BusinessImage,Review,Category
 
 business_routes = Blueprint('business', __name__)
 
@@ -52,6 +52,7 @@ def get_by_id(bus_id):
 def create():
     form = BusinessForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print(request)
     if form.validate_on_submit():
         new_biz = Business(
             owner_id = current_user.id,
@@ -69,7 +70,7 @@ def create():
         db.session.commit()
         return new_biz.to_dict(), 201
     else :
-        return {"errors":form.errors}, 400
+        return {"errors": form.errors}, 400
 
 
 @business_routes.route('/<int:bus_id>', methods=['PUT'])
@@ -163,3 +164,8 @@ def create_review(bus_id):
         return new_review.to_dict(), 201
     else:
         return {"errors": form.errors}, 400
+
+@business_routes.route('/categories')
+def get_categories():
+    categories = Category.query.all()
+    return {'Categories': [cat.to_dict() for cat in categories]}
