@@ -14,6 +14,7 @@ function OneBusiness() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [userList, setUserList] = useState([]);
     // const [currentIndex, setCurrentIndex] = useState(0);
+    const [userList, setUserList] = useState([]);
     const dispatch = useDispatch();
     const { busId } = useParams();
     const bus = useSelector(state => state.business.business);
@@ -22,15 +23,6 @@ function OneBusiness() {
     const images = useSelector(state => state.images.images);
     const redirect = useNavigate();
 
-    useEffect(() => {
-        const fetchUsers = async () => {
-            const res = await fetch('/api/users/');
-            const data = await res.json();
-            setUserList(data.users);
-        };
-
-        fetchUsers();
-    }, []);
 
 
     // const {setModalContent} = useModal();
@@ -48,7 +40,16 @@ function OneBusiness() {
             setIsLoaded(true);
         }
         getBusData();
-    }, [dispatch, busId, isLoaded]);
+    }, [dispatch, busId]);      // removed isLoaded
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            const res = await fetch('/api/users/');
+            const data = await res.json();
+            setUserList(data.users);
+        };
+        fetchUsers();
+    }, []);
 
 
     // useEffect(() => {
@@ -98,27 +99,29 @@ function OneBusiness() {
                 <div id='busbyid'>
                     <div className='bus-images-bar'>
 
-                        {/* {(images.BusinessImages || []).map((image, index) => (
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={bus.business.preview_image} alt="business-image" />
+                        {images && images.BusinessImages && images.BusinessImages.map((image, index) => (
                             <img 
                                 key={index}
                                 className='bus-quad-pic'
-                                style={{ height: '250px', width: '480px', display: index === currentIndex ? 'block' : 'none' }}
+                                style={{ height: '250px', width: '480px'}}
                                 src={image.url}
                                 alt='business-image'
                             />
-                        ))} */}
+                        ))}
 
-                        <img className="bus-quad-pic" style={{ height: '250px', width: '480px' }} src={bus.business.preview_image} alt="business-image" />
-                        <img className="bus-quad-pic" style={{ height: '250px', width: '480px' }} src={images?.BusinessImages?.[0]?.url ?? null} alt="business-image" />
-                        <img className="bus-quad-pic" style={{ height: '250px', width: '480px' }} src={images?.BusinessImages?.[1]?.url ?? null} alt="business-image" />
-                        <img className="bus-quad-pic" style={{ height: '250px', width: '480px' }} src={images?.BusinessImages?.[2]?.url ?? null} alt="business-image" />
+                        {/* <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={bus.business.preview_image} alt="business-image" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[0].url} alt="business-image" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[1].url} alt="business-image" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[2].url} alt="business-image" /> */}
                     </div>
 
                     <div className="bus-title-block">
-                        <h1 className="bus-name" style={{ fontSize: '50px' }}>{bus.business.name}</h1>
-                        <div className="review-line" style={{ fontSize: '20px' }}>
-                            <img className="review-star" src="" alt="star" />
-                            <p className="bus-star-reviews">{bus.business.rating} ({reviews.reviews ? reviews.reviews.length : 0} reviews)</p>
+                        <h1 className="bus-name" style={{fontSize: '50px'}}>{bus.business.name}</h1>
+                        <div className="review-line" style={{fontSize: '20px'}}>
+                            <img className="review-star" src="" alt="star"/>
+                            {/* <p className="bus-star-reviews">{bus.business.rating} ({reviews.reviews ? reviews.reviews.length : 0} reviews)</p> */}
+                            <p className="bus-star-reviews">{bus.business.rating} ({reviews ? reviews.length : 0} reviews)</p>
                         </div>
                         <p className="bus-hours" style={{ fontSize: '20px' }}>{bus.business.hours}</p>
                     </div>
@@ -159,11 +162,11 @@ function OneBusiness() {
                             <div className="lower-left-bus-reviews">
                                 <h2>Reviews</h2>
                                 {reviews.reviews && reviews.reviews.map(obj => {
-                                    const user = userList.find(user => user.id === obj.user_id);
+                                    const user = userList ? userList.find(user => user.id === obj.user_id) : null;
                                     return (
                                         <div className="all-reviews" key={obj.id}>
-                                            <p>{user.username}</p>
-                                            {user && <img style={{ height: '100px', width: '100px' }} src={user.profile_pic} alt="reviewer-pic" />}
+                                            <p>{user ? user.username : null}</p>
+                                            {user && <img style={{ height: '100px', width: '100px' }} src={user ? user.profile_pic : null} alt="reviewer-pic" />}
                                             <p>{obj.review}</p>
                                             {
                                                 sessionUser &&
