@@ -13,6 +13,7 @@ import './OneBusiness.css';
 function OneBusiness(){
     const [isLoaded, setIsLoaded] = useState(false);
     // const [currentIndex, setCurrentIndex] = useState(0);
+    const [userList, setUserList] = useState([]);
     const dispatch = useDispatch();
     const {busId} = useParams();
     const bus = useSelector(state => state.business.business);     
@@ -20,6 +21,8 @@ function OneBusiness(){
     const sessionUser = useSelector(state => state.session.user);
     const images = useSelector(state => state.images.images);
     const redirect = useNavigate();
+
+
 
     // const {setModalContent} = useModal();
 
@@ -37,6 +40,15 @@ function OneBusiness(){
         }
         getBusData();
     }, [dispatch, busId]);      // removed isLoaded
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            const res = await fetch('/api/users/');
+            const data = await res.json();
+            setUserList(data.users);
+        };
+        fetchUsers();
+    }, []);
 
 
     // useEffect(() => {
@@ -148,18 +160,22 @@ function OneBusiness(){
 
                             <div className="lower-left-bus-reviews">
                                 <h2>Reviews</h2>
-                                {reviews.reviews && reviews.reviews.map(obj => (
-                                    <div className="all-reviews" key={obj.id}>
-                                        <img style={{height: '100px', width: '100px'}} src={obj.user_id.profile_pic} alt="reviewer-pic"/>
-                                        <p>{obj.review}</p>
-                                        {
-                                            sessionUser && 
-                                            obj.user_id === sessionUser.id && 
-                                            (<OpenModalButton className='delete-review' buttonText='Delete' modalComponent={<DeleteReview busId={busId} reviewId={obj.id}/>}/>)
-                                        }
-                                        <p>______________________________________</p>
-                                    </div>
-                                ))}
+                                {reviews.reviews && reviews.reviews.map(obj => {
+                                    const user = userList ? userList.find(user => user.id === obj.user_id) : null;
+                                    return (
+                                        <div className="all-reviews" key={obj.id}>
+                                            <p>{user ? user.username : null}</p>
+                                            {user && <img style={{ height: '100px', width: '100px' }} src={user ? user.profile_pic : null} alt="reviewer-pic" />}
+                                            <p>{obj.review}</p>
+                                            {
+                                                sessionUser &&
+                                                obj.user_id === sessionUser.id &&
+                                                (<OpenModalButton className='delete-review' buttonText='Delete' modalComponent={<DeleteReview busId={busId} reviewId={obj.id} />} />)
+                                            }
+                                            <p>______________________________________</p>
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </div>   
                     </div>

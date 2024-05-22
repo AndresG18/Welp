@@ -112,7 +112,7 @@ def delete(bus_id):
     return {"message": "Successfully deleted"}, 200
 
 @business_routes.route('/<int:bus_id>/images')
-@login_required
+# @login_required
 def get_images(bus_id):
     biz_imgs = BusinessImage.query.filter_by(business_id=bus_id).all()
     return {'BusinessImages':[img.to_dict() for img in biz_imgs]}
