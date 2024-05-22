@@ -1,37 +1,83 @@
 import {useState, useEffect} from "react";
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getBusinessByIdThunk} from '../../redux/business';            // check var/func name
-import {getReviewsByBusinessIdThunk} from '../../redux/reviews';           // check var/func name
-import {useModal} from "../../context/Modal";               // optional modals???
-// import DeleteReviewModal from "../DeleteReviewModal";
-// import OpenModalButton from '../OpenModalButton';
+import {getBusinessByIdThunk} from '../../redux/business';            
+import {getReviewsByBusinessIdThunk} from '../../redux/reviews';           
+import {getImagesByBusinessIdThunk} from '../../redux/images';
+// import {useModal} from "../../context/Modal";               
+import DeleteBusiness from "../DeleteBusiness";
+import DeleteReview from "../DeleteReview";
+import OpenModalButton from '../OpenModalButton';
+import './OneBusiness.css';
 
 function OneBusiness(){
     const [isLoaded, setIsLoaded] = useState(false);
+    // const [currentIndex, setCurrentIndex] = useState(0);
     const dispatch = useDispatch();
     const {busId} = useParams();
-    const bus = useSelector(state => state.business);       // var names, as well as nested object path. do the same for following lines
-    const reviews = useSelector(state => state.reviews);            
+    const bus = useSelector(state => state.business.business);     
+    const reviews = useSelector(state => state.reviews.reviews);            
     const sessionUser = useSelector(state => state.session.user);
+    const images = useSelector(state => state.images.images);
+    const redirect = useNavigate();
 
-    const {setModalContent} = useModal();
+    // const {setModalContent} = useModal();
 
-    console.log('Business from useSelector-----> ', bus)
-    console.log('TEST-----------------------')
+    console.log('BUSINESS -------------> ', bus)
+    console.log('REVIEWS -------------->', reviews)
+    console.log('USER ---------------->', sessionUser)
+    console.log('IMAGES -------------->', images)
 
     useEffect(() => {
         async function getBusData(){
            await dispatch(getBusinessByIdThunk(busId));
            await dispatch(getReviewsByBusinessIdThunk(busId));
+           await dispatch(getImagesByBusinessIdThunk(busId));
            setIsLoaded(true);
         }
         getBusData();
     }, [dispatch, busId, isLoaded]);
 
+
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.BusinessImages.length); // Move to the next image
+    //     }, 5000); // Change image every 5 seconds
+    
+    //     return () => clearInterval(interval); // Clear interval on component unmount
+    //   }, [images.BusinessImages.length]);
+
+
     // const reserveClick = () => {
     //     alert('Feature coming soon')
     // }
+
+    const updateClick = () => {
+        redirect(`/bus/${busId}/edit`)
+    }
+
+    const reviewClick = () => {
+        redirect(`/bus/${busId}/reviews/new`)
+    }
+
+    const phoneArr = [
+        '818-111-1111',
+        '202-495-2222',
+        '213-304-3333',
+        '416-775-4444',
+        '481-235-5555',
+        '308-952-6666',
+        '556-954-7777',
+        '626-800-8888',
+        '818-616-9999',
+        '818-321-0000',
+        '909-751-1234',
+        '213-954-5678',
+        '818-493-9012',
+        '466-118-3456',
+        '312-418-7890',
+        '781-731-1234'
+    ]
 
     return(
         <div>
@@ -39,81 +85,81 @@ function OneBusiness(){
             
                 <div id='busbyid'>
                     <div className='bus-images-bar'>
-                        <img className='bus-main-pic' style={{height: '600px', width: '500px'}}src={bus.BusinessImages[0]?.url} alt="main-pic"/>
-                        <img className="bus-quad-pic" style={{height: '250px', width: 'auto'}} src={bus.BusinessImages[1]?.url || '/chicken-no-img.jpg'} alt="small-1" />
-                        <img className="bus-quad-pic" style={{height: '250px', width: 'auto'}} src={bus.BusinessImages[2]?.url || '/chicken-no-img.jpg'} alt="small-1" />
-                        <img className="bus-quad-pic" style={{height: '250px', width: 'auto'}} src={bus.BusinessImages[3]?.url || '/chicken-no-img.jpg'} alt="small-1" />
+
+                        {/* {(images.BusinessImages || []).map((image, index) => (
+                            <img 
+                                key={index}
+                                className='bus-quad-pic'
+                                style={{ height: '250px', width: '480px', display: index === currentIndex ? 'block' : 'none' }}
+                                src={image.url}
+                                alt='business-image'
+                            />
+                        ))} */}
+
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={bus.business.preview_image} alt="business-image" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[0].url} alt="business-image" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[1].url} alt="business-image" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[2].url} alt="business-image" />
                     </div>
 
                     <div className="bus-title-block">
-                        <h1 className="bus-name" style={{fontSize: '40px'}}>{bus.name}</h1>
-                        <p className="bus-star-reviews">{bus.avgStarRating} ({bus.totalreviews})</p>
-                        <p className="bus-hours">{bus.hours}</p>
+                        <h1 className="bus-name" style={{fontSize: '50px'}}>{bus.business.name}</h1>
+                        <div className="review-line" style={{fontSize: '20px'}}>
+                            <img className="review-star" src="" alt="star"/>
+                            <p className="bus-star-reviews">{bus.business.rating} ({reviews.reviews ? reviews.reviews.length : 0} reviews)</p>
+                        </div>
+                        <p className="bus-hours" style={{fontSize: '20px'}}>{bus.business.hours}</p>
                     </div>
 
-                    <div className="bus-page-lower">
-                        <div className="bus-page-lower-left">
-                            <p className="bus-host" style={{fontSize: '28px'}}>Hosted by {bus.Owner.firstName} {bus.Owner.lastName}</p>
-                            <p className="bus-description" style={{fontSize: '25px'}}>Features: {bus.description}</p>
+                    <div className="mid-section">
+                        <div className="bus-buttons-bar">
+                            {
+                                sessionUser && 
+                                sessionUser.id !== bus.business.owner_id && 
+                                !reviews.reviews.find(obj => obj.user_id === sessionUser.id) &&
+                                <button className="bus-review-btn" style={{height: '30px', width: '100px'}} onClick={reviewClick}>Write Review</button>
+                            }
+                            {
+                                sessionUser && 
+                                sessionUser.id === bus.business.owner_id && 
+                                <button className="bus-update-btn" style={{height: '30px', width: '100px'}} onClick={updateClick}>Update</button>
+                            }
+                            {
+                                sessionUser && 
+                                sessionUser.id === bus.business.owner_id && 
+                                (<OpenModalButton className='delete-bus' buttonText='Delete' modalComponent={<DeleteBusiness busId={busId}/>}/>)
+                            }
+                        </div>
 
-                            {!bus.numReviews ? <p style={{fontSize: '25px'}}>New</p> : 
-                            bus.numReviews === 1 ? <p className="det-rev-sum" style={{fontSize: '25px'}}><img className="details-black-star" src='/black-star.jpg'/>
-                            {bus.avgStarRating.toFixed(1)} &#183; {bus.numReviews} Review</p> :
-                            <p className="det-rev-sum" style={{fontSize: '25px'}}><img className='details-black-star' src='/black-star.jpg'/> 
-                            {bus.avgStarRating.toFixed(1)} &#183; {bus.numReviews} Reviews</p>}
+                        <div className="info-box-right">
+                            <h3 className="info-box-1" style={{fontSize: '30px'}}>{bus.business.category_name}</h3>
+                            <h4 className="info-box-2" style={{fontSize: '22px'}}>{phoneArr[bus.business.id - 1]}</h4>
+                            <h4 className="info-box-3" style={{fontSize: '22px'}}>{bus.business.address}</h4>
+                            <h4 className="info-box-4" style={{fontSize: '22px'}}>{bus.business.city}, {bus.business.state}</h4>
+                        </div>
+                        
+                        <div className="lower-left-bus-info">
+                            <div className="bus-description">
+                                <h2>From this business</h2>
+                                <h3>{bus.business.description}</h3>
+                            </div>
 
-                            <div className='bus-review-list'>
-                                {!reviews.length && sessionUser && sessionUser.id !== bus.Owner.id ? 
-                                (
-                                <>
-                                    <p style={{fontSize: '25px'}}>Be the first to post a review!</p>
-                                    <button onClick={handleReviewModal} style={{fontSize: '25px'}}>Post Your Review</button>
-                                </>
-                                ) : (
-                                <>
-                                    <p className="bus-reviews-subtitle" style={{fontSize: '25px'}}>Reviews:</p>
-                                    {sessionUser && sessionUser.id !== bus.Owner.id && !reviews.find(obj => obj.userId === sessionUser.id) && 
-                                    (<button onClick={handleReviewModal} style={{fontSize: '25px'}}>Post Your Review</button>)}
-                                </>
-                                )}
-                                
-                                {
-                                reviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-                                .map((review, index) => (
-                                    <div key={index}>
-                                        <p style={{fontSize: '25px'}}>Reviewer: {review.User.firstName}</p>
-                                        <p style={{fontSize: '25px'}}>Date of review: {new Date(review.createdAt).toLocaleString("default", { month: "long", year: "numeric" })}</p>
-                                        <p style={{fontSize: '25px'}}>Comments: {review.review}</p>
-                                        <p style={{fontSize: '25px'}}>Rating: {review.stars}</p>
-                                        
-                                        {/* {sessionUser && review.userId === sessionUser.id && 
-                                        (<OpenModalButton className='delete-bus' buttonText='Delete' modalComponent={<DeleteReviewModal busId={busId} reviewId={review.id}/>}/>)} */}
-                                        
-                                        <p>____________________________________________________</p>
+                            <div className="lower-left-bus-reviews">
+                                <h2>Reviews</h2>
+                                {reviews.reviews && reviews.reviews.map(obj => (
+                                    <div className="all-reviews" key={obj.id}>
+                                        <img style={{height: '100px', width: '100px'}} src={obj.user_id.profile_pic} alt="reviewer-pic"/>
+                                        <p>{obj.review}</p>
+                                        {
+                                            sessionUser && 
+                                            obj.user_id === sessionUser.id && 
+                                            (<OpenModalButton className='delete-review' buttonText='Delete' modalComponent={<DeleteReview busId={busId} reviewId={obj.id}/>}/>)
+                                        }
+                                        <p>______________________________________</p>
                                     </div>
                                 ))}
-                          
                             </div>
-                        </div>
-    
-                        <div className="bus-page-lower-right">
-                            <div className='callout-box'>
-                                <div className="callout-box-upper"><h2 style={{fontSize: '40px'}}>Don&apos;t miss out!</h2></div>
-                                <div className='callout-box-mid'>
-                                    <div className="callout-right-text">
-                                        {!bus.numReviews ? <p className="callout-review-group" style={{fontSize: '30px'}}>New</p> : 
-                                        bus.numReviews === 1 ? (<p className="callout-review-group" style={{fontSize: '30px'}}><img className="callout-black-star" src='/black-star.jpg'/>
-                                        {bus.avgStarRating.toFixed(1)} &#183; {bus.numReviews} Review</p>) : 
-                                        <p className="callout-review-group" style={{fontSize: '30px'}}>
-                                            <img className="callout-black-star" src='/black-star.jpg'/>
-                                            {bus.avgStarRating.toFixed(1)} &#183; {bus.numReviews} Reviews
-                                        </p>}
-                                    </div>
-                                    <p className="callout-right-price" style={{fontSize: '30px'}}>{`$${bus.price} / night`}</p>
-                                </div>
-                                <button className='callout-box-reserve' onClick={reserveClick} style={{fontSize: '30px'}}>Reserve</button>
-                            </div>
-                        </div>
+                        </div>   
                     </div>
                 </div>
             }
