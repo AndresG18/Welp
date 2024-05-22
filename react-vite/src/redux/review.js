@@ -1,4 +1,3 @@
-
 const GET_REVIEW_BY_ID = 'review/GET_REVIEWS_BY_BUSINESS_ID';
 const CREATE_REVIEW = 'review/CREATE_REVIEW'
 const EDIT_REVIEW_BY_ID = 'review/EDIT_REVIEW_BY_ID'
@@ -32,8 +31,8 @@ export const getReviewByIdThunk = (id) => async (dispatch) => {
 };
 
 
-  export const createReviewThunk = (review) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/new`,{
+  export const createReviewThunk = (id,review) => async (dispatch) => {
+    const response = await fetch(`/api/bus/${id}/reviews/new`,{
         method:'POST',
         body: JSON.stringify(review)
     });

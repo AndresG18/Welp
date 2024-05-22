@@ -36,7 +36,7 @@ function OneBusiness(){
            setIsLoaded(true);
         }
         getBusData();
-    }, [dispatch, busId, isLoaded]);
+    }, [dispatch, busId]);      // removed isLoaded
 
 
     // useEffect(() => {
@@ -86,27 +86,29 @@ function OneBusiness(){
                 <div id='busbyid'>
                     <div className='bus-images-bar'>
 
-                        {/* {(images.BusinessImages || []).map((image, index) => (
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={bus.business.preview_image} alt="business-image" />
+                        {images && images.BusinessImages && images.BusinessImages.map((image, index) => (
                             <img 
                                 key={index}
                                 className='bus-quad-pic'
-                                style={{ height: '250px', width: '480px', display: index === currentIndex ? 'block' : 'none' }}
+                                style={{ height: '250px', width: '480px'}}
                                 src={image.url}
                                 alt='business-image'
                             />
-                        ))} */}
+                        ))}
 
-                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={bus.business.preview_image} alt="business-image" />
+                        {/* <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={bus.business.preview_image} alt="business-image" />
                         <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[0].url} alt="business-image" />
                         <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[1].url} alt="business-image" />
-                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[2].url} alt="business-image" />
+                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[2].url} alt="business-image" /> */}
                     </div>
 
                     <div className="bus-title-block">
                         <h1 className="bus-name" style={{fontSize: '50px'}}>{bus.business.name}</h1>
                         <div className="review-line" style={{fontSize: '20px'}}>
                             <img className="review-star" src="" alt="star"/>
-                            <p className="bus-star-reviews">{bus.business.rating} ({reviews.reviews ? reviews.reviews.length : 0} reviews)</p>
+                            {/* <p className="bus-star-reviews">{bus.business.rating} ({reviews.reviews ? reviews.reviews.length : 0} reviews)</p> */}
+                            <p className="bus-star-reviews">{bus.business.rating} ({reviews ? reviews.length : 0} reviews)</p>
                         </div>
                         <p className="bus-hours" style={{fontSize: '20px'}}>{bus.business.hours}</p>
                     </div>
