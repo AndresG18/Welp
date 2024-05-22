@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBusinessByIdThunk } from '../../redux/business';
 import { getReviewsByBusinessIdThunk } from '../../redux/reviews';
 import { getImagesByBusinessIdThunk } from '../../redux/images';
-// import {useModal} from "../../context/Modal";               
+// import {useModal} from "../../context/Modal";
 import DeleteBusiness from "../DeleteBusiness";
 import DeleteReview from "../DeleteReview";
 import OpenModalButton from '../OpenModalButton';
@@ -98,12 +98,12 @@ function OneBusiness() {
                 <div id='busbyid'>
                     <div className='bus-images-bar'>
 
-                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={bus.business.preview_image} alt="business-image" />
+                        <img className="bus-quad-pic" style={{ height: '250px', width: '480px' }} src={bus.business.preview_image} alt="business-image" />
                         {images && images.BusinessImages && images.BusinessImages.map((image, index) => (
-                            <img 
+                            <img
                                 key={index}
                                 className='bus-quad-pic'
-                                style={{ height: '250px', width: '480px'}}
+                                style={{ height: '250px', width: '480px' }}
                                 src={image.url}
                                 alt='business-image'
                             />
@@ -116,9 +116,9 @@ function OneBusiness() {
                     </div>
 
                     <div className="bus-title-block">
-                        <h1 className="bus-name" style={{fontSize: '50px'}}>{bus.business.name}</h1>
-                        <div className="review-line" style={{fontSize: '20px'}}>
-                            <img className="review-star" src="" alt="star"/>
+                        <h1 className="bus-name" style={{ fontSize: '50px' }}>{bus.business.name}</h1>
+                        <div className="review-line" style={{ fontSize: '20px' }}>
+                            <img className="review-star" src="" alt="star" />
                             {/* <p className="bus-star-reviews">{bus.business.rating} ({reviews.reviews ? reviews.reviews.length : 0} reviews)</p> */}
                             <p className="bus-star-reviews">{bus.business.rating} ({reviews ? reviews.length : 0} reviews)</p>
                         </div>
@@ -167,13 +167,14 @@ function OneBusiness() {
                                             <p>{user ? user.username : null}</p>
                                             <p>{obj.star_rating}</p>
                                             <div className='stars'>
-                                            <div className={obj.star_rating > 0 ? 'star active' : 'star'} />
-                                            <div className={obj.star_rating > 1 ? 'star active' : 'star'} />
-                                            <div className={obj.star_rating > 2 ? 'star active' : 'star'} />
-                                            <div className={obj.star_rating > 3 ? 'star active' : 'star'} />
-                                            <div className={obj.star_rating > 4 ? 'star active' : 'star'} />
+                                                <div className={obj.star_rating > 0 ? 'star active' : 'star'} />
+                                                <div className={obj.star_rating > 1 ? 'star active' : 'star'} />
+                                                <div className={obj.star_rating > 2 ? 'star active' : 'star'} />
+                                                <div className={obj.star_rating > 3 ? 'star active' : 'star'} />
+                                                <div className={obj.star_rating > 4 ? 'star active' : 'star'} />
                                             </div>
-                                            {user && <img style={{ height: '100px', width: '100px' }} src={user ? user.profile_pic : null} alt="reviewer-pic" />}
+                                            {user && <img style={{ height: '100px', width: '100px' }}
+                                                src={user ? user.profile_pic : null} alt="reviewer-pic" />}
                                             <p>{obj.review}</p>
                                             {
                                                 sessionUser &&
