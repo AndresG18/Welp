@@ -6,7 +6,7 @@
 } */
 
 .bus-images-bar {
-    overflow: hidden;
+    /* overflow: hidden; */
     width: 1920px;
     height: 250px;
     position: relative;
