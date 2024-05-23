@@ -97,16 +97,9 @@ function OneBusiness() {
                     
                     <div className='bus-images-bar'>
                         <div className='image-slider'>
-                            {imagesArray.length > 0 && 
-                                imagesArray.concat(imagesArray, imagesArray, imagesArray, imagesArray).map((image, index) => (
-                                    <img
-                                        key={index}
-                                        className='bus-quad-pic'
-                                        src={image.url}
-                                        alt='business-image'
-                                    />
-                                ))
-                            }
+                            {imagesArray.length > 0 && imagesArray.concat(imagesArray, imagesArray, imagesArray, imagesArray).map((image, index) => (
+                                <img key={index} className='bus-quad-pic' src={image.url} alt='business-image'/>
+                            ))}
                         </div>
                     </div>
 
