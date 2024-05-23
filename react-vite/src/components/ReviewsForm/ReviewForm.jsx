@@ -28,7 +28,7 @@ const ReviewForm = ({ review }) => {
             star_rating: starRating
         };
 
-        const data = review ? await dispatch(editReviewByIdThunk(busId, reviewObj))
+        const data = review ? await dispatch(editReviewByIdThunk(reviewId, reviewObj))
             : await dispatch(createReviewThunk(busId, reviewObj));
 
         if (data.errors) {
