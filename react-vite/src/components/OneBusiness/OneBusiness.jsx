@@ -118,13 +118,13 @@ function OneBusiness() {
                     </div> */}
 
                     <div className="bus-title-block">
-                        <h1 className="bus-name" style={{ fontSize: '50px' }}>{bus.business.name}</h1>
-                        <div className="review-line" style={{ fontSize: '20px' }}>
-                            <FaStar />
-                            <p className="bus-star-reviews">{bus.business.rating} ({reviews ? reviews.length : 0} reviews)</p>
+                        <h1 className="bus-name" style={{fontSize: '50px'}}>{bus.business.name}</h1>
+                        <div className="review-line" style={{fontSize: '20px', fontWeight: 'bolder'}}>
+                            <FaStar/>
+                            <p className="bus-star-reviews">{bus.business.rating} ({reviews.reviews.length} reviews)</p>
                         </div>
-                        <p className="bus-hours" style={{ fontSize: '20px' }}>{bus.business.hours}</p>
-                        <p style={{ color: "white" }}>{bus.business.price}</p>
+                        <p className="bus-hours" style={{fontSize: '20px', fontWeight: 'bolder', marginLeft: '2px'}}>Open today from {bus.business.hours}</p>
+                        <p className="price" style={{fontSize: '20px',fontWeight: 'bolder', marginLeft: '2px'}}>{bus.business.price}</p>
                     </div>
 
                     <div className="mid-section">
