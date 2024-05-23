@@ -7,14 +7,14 @@
 
 .bus-images-bar {
     overflow: hidden;
-    width: 1920px; /* Assuming 4 images, each 480px wide */
+    width: 1920px;
     height: 250px;
     position: relative;
 }
 
 .image-slider {
     display: flex;
-    width: calc(480px * 12); /* Triple the width to accommodate the repeated images */
+    width: calc(480px * 12);
     animation: scrollLeft 80s linear infinite;
 }
 

@@ -7,6 +7,7 @@ import { getImagesByBusinessIdThunk } from '../../redux/images';
 // import {useModal} from "../../context/Modal";
 import DeleteBusiness from "../DeleteBusiness";
 import DeleteReview from "../DeleteReview";
+import EditImages from "../EditImages";
 import OpenModalButton from '../OpenModalButton';
 import './OneBusiness.css';
 
@@ -50,15 +51,6 @@ function OneBusiness() {
         fetchUsers();
     }, []);
 
-
-    // useEffect(() => {
-    //     if (bus && images) {
-    //         const initialImagesArray = bus?.preview_image 
-    //             ? [bus.preview_image, ...(images?.BusinessImages || [])]
-    //             : (images?.BusinessImages || []);
-    //         setImagesArray(initialImagesArray);
-    //     }
-    // }, [bus, images]);
 
     useEffect(() => {
         if (images?.BusinessImages) {
@@ -157,6 +149,11 @@ function OneBusiness() {
                                 sessionUser &&
                                 sessionUser.id === bus.business.owner_id &&
                                 (<OpenModalButton className='delete-bus' buttonText='Delete' modalComponent={<DeleteBusiness busId={busId} />} />)
+                            }
+                            {
+                                sessionUser &&
+                                sessionUser.id === bus.business.owner_id &&
+                                (<OpenModalButton className='edit-bus-images' buttonText='Images' modalComponent={<EditImages busId={busId} />} />)
                             }
                         </div>
 

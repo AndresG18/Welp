@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
         element: < UpdateReview />
       },
       {
-        path: "bus/:busId/images/new",
+        path: "/bus/:busId/images/new",
         element: < BusinessImageForm />
       },
       {
