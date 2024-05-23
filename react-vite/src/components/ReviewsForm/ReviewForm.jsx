@@ -21,8 +21,22 @@ const ReviewForm = ({ review }) => {
         dispatch(getReviewByIdThunk(reviewId))
     }, [dispatch, reviewId])
 
+    const validateForm = () => {
+        const newErrors = {};
+
+        if (!reviewText.trim()) newErrors.review = "Description is required";
+        if (!starRating) newErrors.star_rating = "Rating is required";
+        if (starRating < 1 || starRating > 5) newErrors.star_rating = "Rating must be between 1 and 5";
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!validateForm()) return
+
         const reviewObj = {
             review: reviewText,
             star_rating: starRating
@@ -33,7 +47,7 @@ const ReviewForm = ({ review }) => {
 
         if (data.errors) {
             setErrors(data.errors);
-        }else{
+        } else {
             navigate(`/bus/${busId}`)
         }
     };

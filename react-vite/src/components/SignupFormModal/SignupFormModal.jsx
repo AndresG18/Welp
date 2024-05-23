@@ -21,8 +21,42 @@ function SignupFormModal() {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
+  const validateForm = () => {
+    const newErrors = {};
+    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+
+    if (!firstName.trim()) newErrors.firstName = "First Name is required";
+    if (!lastName.trim()) newErrors.lastName = "Last Name is required";
+    if (!email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Email is invalid";
+    }
+    if (!username.trim()) newErrors.username = "Username is required";
+    if (!password.trim()) {
+      newErrors.password = "Password is required";
+    } else if (password.length < 6 || password.length > 20) {
+      newErrors.password = "Password must be in between 6-20 characters long";
+    }
+    if (password !== confirmPassword) {
+      newErrors.confirmPassword = "Confirm Password field must match the Password field";
+    }
+    if (!city.trim()) newErrors.city = "City is required";
+    if (!state.trim()) newErrors.state = "State is required";
+    if (!profilePic.trim()) {
+      newErrors.profilePic = "Profile Picture is required";
+    } else if (!urlRegex.test(profilePic)) {
+      newErrors.profilePic = "Profile Picture URL is invalid";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) return;
 
     if (password !== confirmPassword) {
       return setErrors({
@@ -73,137 +107,155 @@ function SignupFormModal() {
         <div id="or-login">or</div>
       </div>
 
-
-      {errors.server && <p>{errors.server}</p>}
+      {errors.server && <p className="error">{errors.server}</p>}
       <form onSubmit={handleSubmit} className="form-login-container">
         <div className="collapse-fields">
-          <label>
-            First Name:
-            <input
-              type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              required
-              className="input-boxes-login-logout"
-              id="smaller-input"
-            />
-          </label>
-          {errors.firstName && <p>{errors.firstName}</p>}
+          <div className="input-wrapper">
+            <label>
+              First Name:
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+                className="input-boxes-login-logout"
+                id="smaller-input"
+              />
+            </label>
+            {errors.firstName && <p className="error">{errors.firstName}</p>}
+          </div>
 
-          <label>
-            Last Name:
-            <input
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              required
-              className="input-boxes-login-logout"
-              id="smaller-input"
-            />
-          </label>
-          {errors.lastName && <p>{errors.lastName}</p>}
+          <div className="input-wrapper">
+            <label>
+              Last Name:
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+                className="input-boxes-login-logout"
+                id="smaller-input"
+              />
+            </label>
+            {errors.lastName && <p className="error">{errors.lastName}</p>}
+          </div>
         </div>
 
         <div className="collapse-fields">
-          <label>
-            Username:
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              className="input-boxes-login-logout"
-              id="smaller-input"
-            />
-          </label>
-          {errors.username && <p>{errors.username}</p>}
+          <div className="input-wrapper">
+            <label>
+              Username:
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                className="input-boxes-login-logout"
+                id="smaller-input"
+              />
+            </label>
+            {errors.username && <p className="error">{errors.username}</p>}
+          </div>
 
-          <label>
-            Email:
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="input-boxes-login-logout"
-              id="smaller-input"
-            />
-          </label>
-          {errors.email && <p>{errors.email}</p>}
+          <div className="input-wrapper">
+            <label>
+              Email:
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="input-boxes-login-logout"
+                id="smaller-input"
+              />
+            </label>
+            {errors.email && <p className="error">{errors.email}</p>}
+          </div>
         </div>
 
         <div className="collapse-fields">
-          <label>
-            Password:
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="input-boxes-login-logout"
-              id="smaller-input"
-            />
-          </label>
-          {errors.password && <p>{errors.password}</p>}
+          <div className="input-wrapper">
+            <label>
+              Password:
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="input-boxes-login-logout"
+                id="smaller-input"
+              />
+            </label>
+            {errors.password && <p className="error">{errors.password}</p>}
+          </div>
 
-          <label>
-            Confirm Password:
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              className="input-boxes-login-logout"
-              id="smaller-input"
-            />
-          </label>
-          {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+          <div className="input-wrapper">
+            <label>
+              Confirm Password:
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+                className="input-boxes-login-logout"
+                id="smaller-input"
+              />
+            </label>
+            {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
+          </div>
         </div>
 
         <div className="collapse-fields">
-          <label>
-            City:
-            <input
-              type="text"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              required
-              className="input-boxes-login-logout"
-              id="smaller-input"
-            />
-          </label>
-          {errors.city && <p>{errors.city}</p>}
+          <div className="input-wrapper">
+            <label>
+              City:
+              <input
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                required
+                className="input-boxes-login-logout"
+                id="smaller-input"
+              />
+            </label>
+            {errors.city && <p className="error">{errors.city}</p>}
+          </div>
 
-          <label>
-            State:
-            <input
-              type="text"
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-              required
-              className="input-boxes-login-logout"
-              id="smaller-input"
-            />
-          </label>
-          {errors.state && <p>{errors.state}</p>}
+          <div className="input-wrapper">
+            <label>
+              State:
+              <input
+                type="text"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+                required
+                className="input-boxes-login-logout"
+                id="smaller-input"
+              />
+            </label>
+            {errors.state && <p className="error">{errors.state}</p>}
+          </div>
         </div>
 
-        <label>
-          Profile Picture:
-          <input
-            type="text"
-            value={profilePic}
-            onChange={(e) => setProfilePic(e.target.value)}
-            required
-            className="input-boxes-login-logout"
-          />
-        </label>
-        {errors.profilePic && <p>{errors.profilePic}</p>}
+        <div className="input-wrapper">
+          <label>
+            Profile Picture:
+            <input
+              type="text"
+              value={profilePic}
+              onChange={(e) => setProfilePic(e.target.value)}
+              required
+              className="input-boxes-login-logout"
+            />
+          </label>
+          {errors.profilePic && <p className="error">{errors.profilePic}</p>}
+        </div>
 
         <button type="submit" className="login-signup-buttons">Sign Up</button>
       </form>
     </div>
   );
 }
+
 
 export default SignupFormModal;
