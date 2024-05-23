@@ -1,0 +1,6 @@
+.search-bar {
+    background-color: rgb(255, 255, 255);
+    width: min-content;
+    display: flex;
+    border: 1px solid black;
+}
