@@ -119,10 +119,10 @@ function OneBusiness() {
                     <div className="bus-title-block">
                         <h1 className="bus-name" style={{fontSize: '50px'}}>{bus.business.name}</h1>
                         <div className="review-line" style={{fontSize: '20px'}}>
-                            <img className="review-star" src="" alt="star"/>
-                            <p className="bus-star-reviews">{bus.business.rating} ({reviews.reviews.length} reviews)</p>
+                            <p className="star-icon"></p>
+                            <p className="bus-star-reviews" style={{fontSize: '20px', fontWeight: 'bolder'}}>{bus.business.rating} ({reviews.reviews.length} reviews)</p>
                         </div>
-                        <p className="bus-hours" style={{fontSize: '20px'}}>Open today from {bus.business.hours}</p>
+                        <p className="bus-hours" style={{fontSize: '20px', fontWeight: 'bolder', marginLeft: '5px'}}>Open today from {bus.business.hours}</p>
                     </div>
 
                     <div className="mid-section">
@@ -131,12 +131,12 @@ function OneBusiness() {
                                 sessionUser &&
                                 sessionUser.id !== bus.business.owner_id &&
                                 !reviews.reviews.find(obj => obj.user_id === sessionUser.id) &&
-                                <button className="bus-review-btn" style={{height: '30px', width: '100px'}} onClick={reviewClick}>Write Review</button>
+                                <button className="bus-review-btn" style={{height: '30px', width: '130px'}} onClick={reviewClick}>Write Review</button>
                             }
                             {
                                 sessionUser &&
                                 sessionUser.id === bus.business.owner_id &&
-                                <button className="bus-update-btn" style={{height: '30px', width: '100px'}} onClick={updateClick}>Update</button>
+                                <button className="bus-update-btn" style={{height: '30px', width: '130px'}} onClick={updateClick}>Update</button>
                             }
                             {
                                 sessionUser &&

@@ -33,7 +33,8 @@ export default function DeleteImages() {
 
     return (
         <div id='delete-images-container'>
-            <h1>Delete Images</h1>
+            <h1 className='delete-img-title'>Delete Images</h1>
+            <p>Click on the images you would like to delete</p>
             <div className='images-buttons-container'>
                 {imagesArray.map(image => (
                     <button key={image.id} className='image-button' onClick={() => handleDelete(image.id)}>

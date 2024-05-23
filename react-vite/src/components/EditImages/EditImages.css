@@ -7,13 +7,7 @@
     justify-content: space-evenly;
 }
 
-#edit-btn{
-    margin-right: 30px;
-    height: 40px;
-    width: 140px;
-}
-
-#delete-btn{
-    height: 40px;
-    width: 140px;
+.buttons-container{
+    display: flex;
+    gap: 40px;
 }
