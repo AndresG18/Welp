@@ -12,6 +12,7 @@
     position: relative;
 }
 
+
 .image-slider {
     display: flex;
     width: calc(480px * 12);
@@ -134,4 +135,33 @@
 
 .reviews-white-space {
     margin-bottom: 40px;
+}
+
+/* ----------------------------------------------- */
+
+.bus-images-bar {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-slider {
+    display: flex;
+    width: calc(480px * 12);
+    animation: scrollLeft 80s linear infinite;
+}
+
+@keyframes scrollLeft {
+    100% {transform: translateX(-1920px);}
+}
+
+.bus-quad-pic {
+    flex-shrink: 0;
+    width: 480px;
+    height: 300px;
+    object-fit: cover;
+    border-right: 1px solid #ddd;
 }
