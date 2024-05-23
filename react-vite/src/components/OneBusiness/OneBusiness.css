@@ -43,7 +43,7 @@
     position: absolute;
     top: 200px;
     left: 18%;
-    color: white;
+    color: red;
 }
 
 .bus-name {
@@ -79,7 +79,7 @@
 /* ------------------------------------------------ */
 .info-box-right {
     border: 1px solid black;
-    padding-left: 60px;
+    padding: 0 60px 0 60px;
     height: 350px;
 }
 
@@ -136,6 +136,11 @@
     display: flex;
     justify-content: space-between;
     gap: 40px;
+}
+
+.edit-review-btn {
+    height: 30px;
+    width: 130px;
 }
 
 .reviews-white-space {
