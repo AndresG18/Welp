@@ -13,7 +13,6 @@ import './OneBusiness.css';
 function OneBusiness() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [userList, setUserList] = useState([]);
-    // const [currentIndex, setCurrentIndex] = useState(0);        // added for carousel
     const dispatch = useDispatch();
     const { busId } = useParams();
     const bus = useSelector(state => state.business.business);
@@ -21,6 +20,9 @@ function OneBusiness() {
     const sessionUser = useSelector(state => state.session.user);
     const images = useSelector(state => state.images.images);
     const redirect = useNavigate();
+
+    const [imagesArray, setImagesArray] = useState([]); // Added for carousel
+    
 
     // const {setModalContent} = useModal();
 
@@ -50,15 +52,19 @@ function OneBusiness() {
 
 
     // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setCurrentIndex((prevIndex) => 
-    //             images?.BusinessImages && images.BusinessImages.length > 0
-    //                 ? (prevIndex + 1) % (images.BusinessImages.length + 1)
-    //                 : 0
-    //         );
-    //     }, 2000);
-    //     return () => clearInterval(interval);
-    // }, [images?.BusinessImages]);
+    //     if (bus && images) {
+    //         const initialImagesArray = bus?.preview_image 
+    //             ? [bus.preview_image, ...(images?.BusinessImages || [])]
+    //             : (images?.BusinessImages || []);
+    //         setImagesArray(initialImagesArray);
+    //     }
+    // }, [bus, images]);
+
+    useEffect(() => {
+        if (images?.BusinessImages) {
+            setImagesArray(images.BusinessImages);
+        }
+    }, [images]);
 
     // const reserveClick = () => {
     //     alert('Feature coming soon')
@@ -96,8 +102,23 @@ function OneBusiness() {
             {isLoaded && bus &&
 
                 <div id='busbyid'>
+                    
                     <div className='bus-images-bar'>
+                        <div className='image-slider'>
+                            {imagesArray.length > 0 && 
+                                imagesArray.concat(imagesArray, imagesArray, imagesArray, imagesArray).map((image, index) => (
+                                    <img
+                                        key={index}
+                                        className='bus-quad-pic'
+                                        src={image.url}
+                                        alt='business-image'
+                                    />
+                                ))
+                            }
+                        </div>
+                    </div>
 
+                    {/* <div className='bus-images-bar'>
                         <img className="bus-quad-pic" style={{ height: '250px', width: '480px' }} src={bus.business.preview_image} alt="business-image" />
                         {images && images.BusinessImages && images.BusinessImages.map((image, index) => (
                             <img
@@ -108,18 +129,12 @@ function OneBusiness() {
                                 alt='business-image'
                             />
                         ))}
-
-                        {/* <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={bus.business.preview_image} alt="business-image" />
-                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[0].url} alt="business-image" />
-                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[1].url} alt="business-image" />
-                        <img className="bus-quad-pic" style={{height: '250px', width: '480px'}} src={images.BusinessImages[2].url} alt="business-image" /> */}
-                    </div>
+                    </div> */}
 
                     <div className="bus-title-block">
                         <h1 className="bus-name" style={{ fontSize: '50px' }}>{bus.business.name}</h1>
                         <div className="review-line" style={{ fontSize: '20px' }}>
                             <img className="review-star" src="" alt="star" />
-                            {/* <p className="bus-star-reviews">{bus.business.rating} ({reviews.reviews ? reviews.reviews.length : 0} reviews)</p> */}
                             <p className="bus-star-reviews">{bus.business.rating} ({reviews ? reviews.length : 0} reviews)</p>
                         </div>
                         <p className="bus-hours" style={{ fontSize: '20px' }}>{bus.business.hours}</p>
@@ -179,7 +194,6 @@ function OneBusiness() {
                                                     <p className="review-sentence">{obj.review}</p>
 
                                                     <div className="star-rating-group">
-                                                        {/* <p className="reviewer-rating">{obj.star_rating}</p> */}
                                                         <div className='stars'>
                                                             <div className={obj.star_rating > 0 ? 'star active' : 'star'} />
                                                             <div className={obj.star_rating > 1 ? 'star active' : 'star'} />

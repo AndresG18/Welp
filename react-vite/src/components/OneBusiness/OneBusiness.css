@@ -1,8 +1,32 @@
-.bus-images-bar {
+/* .bus-images-bar {
     display: grid;
     grid-template-columns: repeat(4, auto);
     justify-content: center;
     position: relative;
+} */
+
+.bus-images-bar {
+    overflow: hidden;
+    width: 1920px; /* Assuming 4 images, each 480px wide */
+    height: 250px;
+    position: relative;
+}
+
+.image-slider {
+    display: flex;
+    width: calc(480px * 12); /* Triple the width to accommodate the repeated images */
+    animation: scrollLeft 80s linear infinite;
+}
+
+@keyframes scrollLeft {
+    /* 0% {transform: translateX(0);} */
+    100% {transform: translateX(-1920px);}
+}
+
+.bus-quad-pic {
+    flex-shrink: 0;
+    width: 480px;
+    height: 250px;
 }
 
 /* ------------------------------------------------ */
@@ -99,6 +123,7 @@
 .reviews-button-block {
     display: flex;
     justify-content: space-between;
+    gap: 40px;
 }
 
 .edit-delete-button {
