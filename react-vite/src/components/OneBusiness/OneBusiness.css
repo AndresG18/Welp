@@ -5,6 +5,13 @@
     position: relative;
 } */
 
+.modal-buttons {
+    /* padding: 5px 10px; */
+    height: 30px;
+    width: 130px;
+}
+
+/* ------------------------------------------------ */
 .bus-images-bar {
     overflow: hidden;
     width: 1920px;
@@ -39,6 +46,23 @@
     left: 18%;
     color: white;
 }
+
+.star-icon{
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+    background-color: gold;
+    clip-path: polygon(50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%);
+  }
 
 .bus-name {
     margin-bottom: 5px;
@@ -125,12 +149,6 @@
     display: flex;
     justify-content: space-between;
     gap: 40px;
-}
-
-.edit-delete-button {
-    padding: 5px 10px;
-    height: 30px;
-    width: 100px;
 }
 
 .reviews-white-space {
