@@ -28,8 +28,6 @@ const ReviewForm = ({ review }) => {
             star_rating: starRating
         };
 
-        const res = await dispatch(createReviewThunk(busId, reviewObj))
-        console.log(res)
         const data = review ? await dispatch(editReviewByIdThunk(review.id, reviewObj))
             : await dispatch(createReviewThunk(busId, reviewObj));
 
