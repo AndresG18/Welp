@@ -28,7 +28,7 @@ function OneBusiness() {
 
     // const {setModalContent} = useModal();
 
-    // console.log('BUSINESS -------------> ', bus)
+    console.log('BUSINESS -------------> ', bus)
     // console.log('REVIEWS -------------->', reviews)
     // console.log('USER ---------------->', sessionUser)
     // console.log('IMAGES -------------->', images)
@@ -98,11 +98,21 @@ function OneBusiness() {
 
                 <div id='busbyid'>
 
-                    <div className='bus-images-bar'>
+                    {/* <div className='bus-images-bar'>
                         <div className='image-slider'>
                             {imagesArray.length > 0 && imagesArray.concat(imagesArray, imagesArray, imagesArray, imagesArray).map((image, index) => (
                                 <img key={index} className='bus-quad-pic' src={image.url} alt='business-image' />
                             ))}
+                        </div>
+                    </div> */}
+
+                    <div className='bus-images-bar'>
+                        <div className='image-slider'>
+                            {imagesArray.length > 0 ? imagesArray.concat(imagesArray, imagesArray, imagesArray, imagesArray).map((image, index) => (
+                                <img key={index} className='bus-quad-pic' src={image.url} alt='business-image' />
+                            )) : (
+                                <img className='bus-prev-img' src={bus.business.preview_image} alt='business-preview' />
+                            )}
                         </div>
                     </div>
 
@@ -158,6 +168,7 @@ function OneBusiness() {
 
                             <div className="lower-left-bus-reviews">
                                 <h2 className="reviews-title">Reviews</h2>
+                                {!reviews.reviews.length && <p>No reviews yet</p>}
                                 {reviews.reviews && reviews.reviews.map(obj => {
                                     const user = userList ? userList.find(user => user.id === obj.user_id) : null;
                                     return (

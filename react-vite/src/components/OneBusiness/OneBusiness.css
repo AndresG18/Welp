@@ -25,6 +25,10 @@
     animation: scrollLeft 80s linear infinite;
 }
 
+.image-slider.bus-prev-img {
+    animation: none;
+}
+
 @keyframes scrollLeft {
     /* 0% {transform: translateX(0);} */
     100% {transform: translateX(-1920px);}
@@ -43,7 +47,7 @@
     position: absolute;
     top: 200px;
     left: 18%;
-    color: red;
+    color: azure;
 }
 
 .bus-name {
