@@ -1,38 +1,27 @@
+// import React from 'react';
 import { useModal } from '../../context/Modal';
-// import { useDispatch, } from 'react-redux';
-import {useNavigate, useParams} from 'react-router-dom';
-// import { deleteImageThunk } from '../../redux/image';
-// import { getBusinessByIdThunk } from '../../redux/business';
-// import { getReviewsByBusinessIdThunk } from '../../redux/reviews';
+import { useNavigate, useParams } from 'react-router-dom';
+import OpenModalButton from '../OpenModalButton';
+import DeleteImages from '../DeleteImages';
 import './EditImages.css';
 
-export default function EditImages(){
-    const {closeModal} = useModal()
-    // const dispatch = useDispatch()
-    const {busId} = useParams()
-    const navigate = useNavigate()
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        // await dispatch(deleteImageThunk(imageId))
-        // await dispatch(getBusinessByIdThunk(busId))
-        // await dispatch(getReviewsByBusinessIdThunk(busId))
-        closeModal()
-    }
+export default function EditImages() {
+    const {closeModal} = useModal();
+    const {busId} = useParams();
+    const navigate = useNavigate();
 
     const handleEdit = () => {
-        navigate(`/bus/${busId}/images/new`)
-        closeModal()
+        navigate(`/bus/${busId}/images/new`);
+        closeModal();
     }
 
     return (
         <div id='edit-images-container'>
-            <p>Show thumbnail of all images</p>
-            <p>By clicking on thumbnail, delete that image?</p>
+            <h1>Edit Images</h1>
             <div className='buttons-container'>
-                <button id='edit-btn' onClick={handleEdit}>Edit Images</button>
-                <button id='delete-btn' onClick={(e) => handleSubmit(e)}>Delete Image</button>
+                <button id='edit-btn' onClick={handleEdit}>Add Images</button>
+                <OpenModalButton id='delete-btn' buttonText='Delete Images' modalComponent={<DeleteImages busId={busId}/>} beforeOpen={closeModal}/>
             </div>
         </div>
-    )
+    );
 }

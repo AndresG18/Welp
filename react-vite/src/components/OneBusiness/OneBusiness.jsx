@@ -15,7 +15,7 @@ function OneBusiness() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [userList, setUserList] = useState([]);
     const dispatch = useDispatch();
-    const { busId } = useParams();
+    const {busId} = useParams();
     const bus = useSelector(state => state.business.business);
     const reviews = useSelector(state => state.reviews.reviews);
     const sessionUser = useSelector(state => state.session.user);
@@ -117,12 +117,12 @@ function OneBusiness() {
                     </div> */}
 
                     <div className="bus-title-block">
-                        <h1 className="bus-name" style={{ fontSize: '50px' }}>{bus.business.name}</h1>
-                        <div className="review-line" style={{ fontSize: '20px' }}>
-                            <img className="review-star" src="" alt="star" />
-                            <p className="bus-star-reviews">{bus.business.rating} ({reviews ? reviews.length : 0} reviews)</p>
+                        <h1 className="bus-name" style={{fontSize: '50px'}}>{bus.business.name}</h1>
+                        <div className="review-line" style={{fontSize: '20px'}}>
+                            <img className="review-star" src="" alt="star"/>
+                            <p className="bus-star-reviews">{bus.business.rating} ({reviews.reviews.length} reviews)</p>
                         </div>
-                        <p className="bus-hours" style={{ fontSize: '20px' }}>{bus.business.hours}</p>
+                        <p className="bus-hours" style={{fontSize: '20px'}}>Open today from {bus.business.hours}</p>
                     </div>
 
                     <div className="mid-section">
@@ -131,30 +131,30 @@ function OneBusiness() {
                                 sessionUser &&
                                 sessionUser.id !== bus.business.owner_id &&
                                 !reviews.reviews.find(obj => obj.user_id === sessionUser.id) &&
-                                <button className="bus-review-btn" style={{ height: '30px', width: '100px' }} onClick={reviewClick}>Write Review</button>
+                                <button className="bus-review-btn" style={{height: '30px', width: '100px'}} onClick={reviewClick}>Write Review</button>
                             }
                             {
                                 sessionUser &&
                                 sessionUser.id === bus.business.owner_id &&
-                                <button className="bus-update-btn" style={{ height: '30px', width: '100px' }} onClick={updateClick}>Update</button>
+                                <button className="bus-update-btn" style={{height: '30px', width: '100px'}} onClick={updateClick}>Update</button>
                             }
                             {
                                 sessionUser &&
                                 sessionUser.id === bus.business.owner_id &&
-                                (<OpenModalButton className='delete-bus' buttonText='Delete' modalComponent={<DeleteBusiness busId={busId} />} />)
+                                (<OpenModalButton className='delete-bus' buttonText='Delete' modalComponent={<DeleteBusiness busId={busId}/>}/>)
                             }
                             {
                                 sessionUser &&
                                 sessionUser.id === bus.business.owner_id &&
-                                (<OpenModalButton className='edit-bus-images' buttonText='Images' modalComponent={<EditImages busId={busId} />} />)
+                                (<OpenModalButton className='edit-bus-images' buttonText='Images' modalComponent={<EditImages busId={busId}/>}/>)
                             }
                         </div>
 
                         <div className="info-box-right">
-                            <h3 className="info-box-1" style={{ fontSize: '30px' }}>{bus.business.category_name}</h3>
-                            <h4 className="info-box-2" style={{ fontSize: '22px' }}>{phoneArr[bus.business.id - 1]}</h4>
-                            <h4 className="info-box-3" style={{ fontSize: '22px' }}>{bus.business.address}</h4>
-                            <h4 className="info-box-4" style={{ fontSize: '22px' }}>{bus.business.city}, {bus.business.state}</h4>
+                            <h3 className="info-box-1" style={{fontSize: '30px'}}>{bus.business.category_name}</h3>
+                            <h4 className="info-box-2" style={{fontSize: '22px'}}>{phoneArr[bus.business.id - 1]}</h4>
+                            <h4 className="info-box-3" style={{fontSize: '22px'}}>{bus.business.address}</h4>
+                            <h4 className="info-box-4" style={{fontSize: '22px'}}>{bus.business.city}, {bus.business.state}</h4>
                         </div>
 
                         <div className="lower-left-bus-info">
@@ -173,8 +173,8 @@ function OneBusiness() {
                                             <div className="reviewer-entire-block">
                                                 <div className="reviewer-profile-pic">
                                                     {
-                                                        user && <img style={{ height: '100px', width: '100px' }}
-                                                        src={user ? user.profile_pic : null} alt="reviewer-pic" />
+                                                        user && <img style={{height: '100px', width: '100px'}}
+                                                        src={user ? user.profile_pic : null} alt="reviewer-pic"/>
                                                     }
                                                 </div>
                                             
@@ -185,11 +185,11 @@ function OneBusiness() {
 
                                                     <div className="star-rating-group">
                                                         <div className='stars'>
-                                                            <div className={obj.star_rating > 0 ? 'star active' : 'star'} />
-                                                            <div className={obj.star_rating > 1 ? 'star active' : 'star'} />
-                                                            <div className={obj.star_rating > 2 ? 'star active' : 'star'} />
-                                                            <div className={obj.star_rating > 3 ? 'star active' : 'star'} />
-                                                            <div className={obj.star_rating > 4 ? 'star active' : 'star'} />
+                                                            <div className={obj.star_rating > 0 ? 'star active' : 'star'}/>
+                                                            <div className={obj.star_rating > 1 ? 'star active' : 'star'}/>
+                                                            <div className={obj.star_rating > 2 ? 'star active' : 'star'}/>
+                                                            <div className={obj.star_rating > 3 ? 'star active' : 'star'}/>
+                                                            <div className={obj.star_rating > 4 ? 'star active' : 'star'}/>
                                                         </div>
                                                     </div>
                                                 
@@ -197,8 +197,8 @@ function OneBusiness() {
                                                         sessionUser &&
                                                         obj.user_id === sessionUser.id &&
                                                         (<div className="reviews-button-block">
-                                                            <OpenModalButton buttonText='Delete' modalComponent={<DeleteReview busId={busId} reviewId={obj.id} />} />
-                                                            <button onClick={() => redirect(`/bus/${busId}/reviews/${obj.id}/edit`)} className="edit-delete-button">Edit</button>
+                                                            <OpenModalButton buttonText='Delete' modalComponent={<DeleteReview busId={busId} reviewId={obj.id}/>}/>
+                                                            <button className="edit-delete-button" onClick={() => redirect(`/bus/${busId}/reviews/${obj.id}/edit`)}>Edit</button>
                                                         </div>)
                                                     }
                                                 </div>
