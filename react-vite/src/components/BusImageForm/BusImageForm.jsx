@@ -2,6 +2,7 @@ import  { useState, useEffect } from 'react';
 import { useNavigate , useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createImageThunk } from '../../redux/image';
+import { getBusinessByIdThunk } from '../../redux/business';
 
 const BusinessImageForm = ( ) => {
     const dispatch = useDispatch();
@@ -10,10 +11,14 @@ const BusinessImageForm = ( ) => {
     const [errors, setErrors] = useState({});
 
     const user = useSelector(state => state.session.user);
+    const business = useSelector(state => state?.business?.business?.business)
     const {busId} = useParams()
+    console.log(business)
+    
     useEffect(() => {
-        if (!user) navigate('/');
-    }, [user, navigate]);
+        dispatch(getBusinessByIdThunk(busId))
+        if (!user ) navigate('/');
+    }, [user, navigate,dispatch]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,11 +26,11 @@ const BusinessImageForm = ( ) => {
         
         const imageObj = { url };
         const data = await dispatch(createImageThunk(busId, imageObj));
-        
-        if (data.errors) {
-            setErrors(data.errors);
+
+        if (data.errors || data.message) {
+            setErrors(data?.errors);
         } else {
-            setUrl(''); // Clear the input field after successful submission
+            setUrl(''); 
             navigate(`/bus/${busId}`);
         }
     };
@@ -42,8 +47,8 @@ const BusinessImageForm = ( ) => {
                         onChange={(e) => setUrl(e.target.value)} 
                         placeholder='Enter image URL' 
                     />
+                {errors?.url && <p className="error">{errors?.url}</p>}
                 </section>
-                {errors.url && <p className="error">{errors.url}</p>}
                 <button type='submit'>Add Image</button>
             </form>
         </div>
