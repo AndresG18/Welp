@@ -36,7 +36,7 @@ export default function Businesses({ business }) {
 
           <div>
             <div>
-              <p>&quot{business.description}&quot</p>
+              <p>{business.description}</p>
             </div>
           </div>
         </div>
