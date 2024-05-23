@@ -13,7 +13,7 @@ import './OneBusiness.css';
 function OneBusiness() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [userList, setUserList] = useState([]);
-    // const [currentIndex, setCurrentIndex] = useState(0);
+    // const [currentIndex, setCurrentIndex] = useState(0);        // added for carousel
     const dispatch = useDispatch();
     const { busId } = useParams();
     const bus = useSelector(state => state.business.business);
@@ -21,8 +21,6 @@ function OneBusiness() {
     const sessionUser = useSelector(state => state.session.user);
     const images = useSelector(state => state.images.images);
     const redirect = useNavigate();
-
-
 
     // const {setModalContent} = useModal();
 
@@ -53,12 +51,14 @@ function OneBusiness() {
 
     // useEffect(() => {
     //     const interval = setInterval(() => {
-    //       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.BusinessImages.length); // Move to the next image
-    //     }, 5000); // Change image every 5 seconds
-
-    //     return () => clearInterval(interval); // Clear interval on component unmount
-    //   }, [images.BusinessImages.length]);
-
+    //         setCurrentIndex((prevIndex) => 
+    //             images?.BusinessImages && images.BusinessImages.length > 0
+    //                 ? (prevIndex + 1) % (images.BusinessImages.length + 1)
+    //                 : 0
+    //         );
+    //     }, 2000);
+    //     return () => clearInterval(interval);
+    // }, [images?.BusinessImages]);
 
     // const reserveClick = () => {
     //     alert('Feature coming soon')
@@ -154,39 +154,52 @@ function OneBusiness() {
 
                         <div className="lower-left-bus-info">
                             <div className="bus-description">
-                                <h2>From this business</h2>
+                                <h2 className="description-text">From this business</h2>
                                 <h3>{bus.business.description}</h3>
                             </div>
 
                             <div className="lower-left-bus-reviews">
-                                <h2>Reviews</h2>
+                                <h2 className="reviews-title">Reviews</h2>
                                 {reviews.reviews && reviews.reviews.map(obj => {
                                     const user = userList ? userList.find(user => user.id === obj.user_id) : null;
                                     return (
                                         <div className="all-reviews" key={obj.id}>
-                                            <p>{user ? user.username : null}</p>
-                                            <p>{obj.star_rating}</p>
-                                            <div className='stars'>
-                                                <div className={obj.star_rating > 0 ? 'star active' : 'star'} />
-                                                <div className={obj.star_rating > 1 ? 'star active' : 'star'} />
-                                                <div className={obj.star_rating > 2 ? 'star active' : 'star'} />
-                                                <div className={obj.star_rating > 3 ? 'star active' : 'star'} />
-                                                <div className={obj.star_rating > 4 ? 'star active' : 'star'} />
+                                            
+                                            <div className="reviewer-entire-block">
+                                                <div className="reviewer-profile-pic">
+                                                    {
+                                                        user && <img style={{ height: '100px', width: '100px' }}
+                                                        src={user ? user.profile_pic : null} alt="reviewer-pic" />
+                                                    }
+                                                </div>
+                                            
+                                                <div className="reviewer-text-block">
+                                                    <p className="reviewer-name">{user ? user.username : null}</p>
+
+                                                    <p className="review-sentence">{obj.review}</p>
+
+                                                    <div className="star-rating-group">
+                                                        {/* <p className="reviewer-rating">{obj.star_rating}</p> */}
+                                                        <div className='stars'>
+                                                            <div className={obj.star_rating > 0 ? 'star active' : 'star'} />
+                                                            <div className={obj.star_rating > 1 ? 'star active' : 'star'} />
+                                                            <div className={obj.star_rating > 2 ? 'star active' : 'star'} />
+                                                            <div className={obj.star_rating > 3 ? 'star active' : 'star'} />
+                                                            <div className={obj.star_rating > 4 ? 'star active' : 'star'} />
+                                                        </div>
+                                                    </div>
+                                                
+                                                    {
+                                                        sessionUser &&
+                                                        obj.user_id === sessionUser.id &&
+                                                        (<div className="reviews-button-block">
+                                                            <OpenModalButton buttonText='Delete' modalComponent={<DeleteReview busId={busId} reviewId={obj.id} />} />
+                                                            <button onClick={() => redirect(`/bus/${busId}/reviews/${obj.id}/edit`)} className="edit-delete-button">Edit</button>
+                                                        </div>)
+                                                    }
+                                                </div>
                                             </div>
-                                            {user && <img style={{ height: '100px', width: '100px' }}
-                                                src={user ? user.profile_pic : null} alt="reviewer-pic" />}
-                                            <p>{obj.review}</p>
-                                            {
-                                                sessionUser &&
-                                                obj.user_id === sessionUser.id &&
-                                                (<div>
-                                                    <OpenModalButton buttonText='Delete' modalComponent={<DeleteReview busId={busId} reviewId={obj.id} />} />
-
-                                                    <button onClick={() => redirect(`/bus/${busId}/reviews/${obj.id}/edit`)} className="edit-delete-button">Edit</button>
-                                                </div>)
-
-                                            }
-                                            <p>______________________________________</p>
+                                            <div className="reviews-white-space"></div>
                                         </div>
                                     );
                                 })}
