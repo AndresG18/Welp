@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { createBusinessThunk } from '../../redux/business'
 import { editBusinessThunk } from '../../redux/business';
+import './BusinessForm.css'
 // import React from 'react';
 const BusinessForm = ({ bus }) => {
     console.log(bus, 'FROM THE FORM')
@@ -63,8 +64,8 @@ const BusinessForm = ({ bus }) => {
                         onChange={(e) => { setName(e.target.value) }}
                         placeholder='Name' >
                     </input>
-                </section>
                 {errors.name && <p className="error">{errors.name}</p>}
+                </section>
                 <section className='form-section'>
                     <h3>{"What is the business category?"}</h3>
                     <select value={category_id} onChange={(e) => setCategoryId(e.target.value)}>
@@ -74,8 +75,8 @@ const BusinessForm = ({ bus }) => {
                         <option value={3}>Cafe</option>
                         <option value={4}>Store</option>
                     </select>
-                </section>
                 {errors.category_id && <p className="error">{errors.category_id}</p>}
+                </section>
                 <section className='form-section'>
                     <h3>Set your business location</h3>
                     <input
@@ -100,8 +101,8 @@ const BusinessForm = ({ bus }) => {
                         onChange={(e) => { setAddress(e.target.value) }}
                         placeholder='Address' >
                     </input>
-                </section>
                 {errors.address && <p className="error">{errors.address}</p>}
+                </section>
                 <section className='form-section'>
                     <h3>{"Set your business hours"}</h3>
                     <input type='text'
@@ -109,8 +110,8 @@ const BusinessForm = ({ bus }) => {
                         onChange={(e) => { setHours(e.target.value) }}
                         placeholder='ex: 7am - 8pm' >
                     </input>
-                </section>
                 {errors.hours && <p className="error">{errors.hours}</p>}
+                </section>
                 <section className='form-section'>
                     <h3>{"What is your business about?"}</h3>
                     <textarea type='text'
@@ -118,8 +119,8 @@ const BusinessForm = ({ bus }) => {
                         onChange={(e) => { setDescription(e.target.value) }}
                         placeholder='Description' >
                     </textarea>
-                </section>
                 {errors.description && <p className="error">{errors.description}</p>}
+                </section>
                 <section className='form-section'>
                     <h3>{"What is the price range of your business?"}</h3>
                     <ul>
@@ -133,8 +134,8 @@ const BusinessForm = ({ bus }) => {
                         <option value={"Medium"}>$$</option>
                         <option value={"High"}>$$$</option>
                     </select>
-                </section>
                 {errors.price && <p className="error">{errors.price}</p>}
+                </section>
                 <section className='form-section'>
                     <h3>{"What will be your business's preview image?"}</h3>
                     <input type='text'
@@ -142,8 +143,8 @@ const BusinessForm = ({ bus }) => {
                         onChange={(e) => { setPreviewImage(e.target.value) }}
                         placeholder='URL' >
                     </input>
-                </section>
                 {errors.preview_image && <p className="error">{errors.preview_image}</p>}
+                </section>
                 <button type='submit'>
                     {bus ? `Update Business ` : `Create Business`}
                 </button>

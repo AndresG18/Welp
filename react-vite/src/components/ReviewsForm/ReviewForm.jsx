@@ -32,12 +32,12 @@ const ReviewForm = ({ review }) => {
         console.log(res)
         const data = review ? await dispatch(editReviewByIdThunk(review.id, reviewObj))
             : await dispatch(createReviewThunk(busId, reviewObj));
-        console.log(data)
 
         if (data.errors) {
             setErrors(data.errors);
+        }else{
+            navigate(`/bus/${busId}`)
         }
-        navigate(`/bus/${busId}`)
     };
 
     return (
