@@ -1,16 +1,7 @@
 import { NavLink } from "react-router-dom"
 import "./Businesses.css"
 
-// const dollarIcons = (range) => {
-//   let priceIcons = ""
-//   for (let i = 0; i < Number(range); i++) {
-//     priceIcons = priceIcons.concat("$");
-//   }
-//   return priceIcons
-// }
-
 export default function Businesses({ business }) {
-  // const price = dollarIcons(business.price_range)
   return (
     <div>
       <NavLink to={`/bus/${business.id}`}>
@@ -32,6 +23,10 @@ export default function Businesses({ business }) {
               <div className={business.rating > 4 ? 'star active' : 'star'} />
             </div>
             {business.rating}
+          </div>
+
+          <div style={{ color: "green" }}>
+            {business.price}
           </div>
 
           <div>

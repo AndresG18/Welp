@@ -5,6 +5,7 @@ import { getBusinessByIdThunk } from '../../redux/business';
 import { getReviewsByBusinessIdThunk } from '../../redux/reviews';
 import { getImagesByBusinessIdThunk } from '../../redux/images';
 // import {useModal} from "../../context/Modal";
+import { FaStar } from "react-icons/fa";
 import DeleteBusiness from "../DeleteBusiness";
 import DeleteReview from "../DeleteReview";
 import EditImages from "../EditImages";
@@ -23,7 +24,7 @@ function OneBusiness() {
     const redirect = useNavigate();
 
     const [imagesArray, setImagesArray] = useState([]); // Added for carousel
-    
+
 
     // const {setModalContent} = useModal();
 
@@ -94,11 +95,11 @@ function OneBusiness() {
             {isLoaded && bus &&
 
                 <div id='busbyid'>
-                    
+
                     <div className='bus-images-bar'>
                         <div className='image-slider'>
                             {imagesArray.length > 0 && imagesArray.concat(imagesArray, imagesArray, imagesArray, imagesArray).map((image, index) => (
-                                <img key={index} className='bus-quad-pic' src={image.url} alt='business-image'/>
+                                <img key={index} className='bus-quad-pic' src={image.url} alt='business-image' />
                             ))}
                         </div>
                     </div>
@@ -119,10 +120,11 @@ function OneBusiness() {
                     <div className="bus-title-block">
                         <h1 className="bus-name" style={{ fontSize: '50px' }}>{bus.business.name}</h1>
                         <div className="review-line" style={{ fontSize: '20px' }}>
-                            <img className="review-star" src="" alt="star" />
+                            <FaStar />
                             <p className="bus-star-reviews">{bus.business.rating} ({reviews ? reviews.length : 0} reviews)</p>
                         </div>
                         <p className="bus-hours" style={{ fontSize: '20px' }}>{bus.business.hours}</p>
+                        <p style={{ color: "white" }}>{bus.business.price}</p>
                     </div>
 
                     <div className="mid-section">
@@ -169,15 +171,15 @@ function OneBusiness() {
                                     const user = userList ? userList.find(user => user.id === obj.user_id) : null;
                                     return (
                                         <div className="all-reviews" key={obj.id}>
-                                            
+
                                             <div className="reviewer-entire-block">
                                                 <div className="reviewer-profile-pic">
                                                     {
                                                         user && <img style={{ height: '100px', width: '100px' }}
-                                                        src={user ? user.profile_pic : null} alt="reviewer-pic" />
+                                                            src={user ? user.profile_pic : null} alt="reviewer-pic" />
                                                     }
                                                 </div>
-                                            
+
                                                 <div className="reviewer-text-block">
                                                     <p className="reviewer-name">{user ? user.username : null}</p>
 
@@ -192,7 +194,7 @@ function OneBusiness() {
                                                             <div className={obj.star_rating > 4 ? 'star active' : 'star'} />
                                                         </div>
                                                     </div>
-                                                
+
                                                     {
                                                         sessionUser &&
                                                         obj.user_id === sessionUser.id &&
