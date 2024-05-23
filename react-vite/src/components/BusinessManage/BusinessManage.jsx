@@ -17,12 +17,6 @@ function BusinessManage() {
       .then(() => setIsLoaded(true))
   }, [dispatch])
 
-  if (businessList.length == 0) {
-    return (
-      <h1>You own no businesses</h1>
-    )
-  }
-
   return (
     isLoaded ? (
       businessList && businessList.length > 0 ? (
