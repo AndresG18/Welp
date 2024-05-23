@@ -13,14 +13,14 @@ const getCurrentBusinesses = (businesses) => ({
 });
 
 export const getAllBusinessesThunk = () => async (dispatch) => {
-  const response = await fetch('/api/businesses');
+  const response = await fetch('/api/bus');
   const data = await response.json();
   if (response.ok) dispatch(getAllBusinesses(data));
   return data;
 };
 
 export const getCurrentBusinessesThunk = () => async (dispatch) => {
-  const response = await fetch('/api/businesses/current');
+  const response = await fetch('/api/bus/current');
   const data = await response.json();
   if (response.ok) dispatch(getCurrentBusinesses(data));
   return data;

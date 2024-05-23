@@ -5,8 +5,7 @@ import Businesses from "./Businesses"
 
 function AllBusinesses() {
   const dispatch = useDispatch()
-  const businessList = useSelector(state => state.businesses)
-  const businesses = Object.values(businessList)
+  const businessList = useSelector(state => state.businesses?.Businesses?.businesses)
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
@@ -18,7 +17,7 @@ function AllBusinesses() {
     <div>
       <div>All Results</div>
       <div>
-        {businesses.map(business => (
+        {businessList.map(business => (
           <Businesses key={business.id} business={business} />
         ))}
       </div>

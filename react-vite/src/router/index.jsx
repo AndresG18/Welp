@@ -3,7 +3,7 @@ import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import HomePage from '../components/HomePage/HomePage'
-import Businesses from '../components/Businesses/Businesses';
+import AllBusinesses from '../components/Businesses/AllBusinesses';
 import OneBusiness from '../components/OneBusiness/OneBusiness'
 import BusinessForm from '../components/BusinessForm/BusinessForm'
 import ReviewsForm from '../components/ReviewsForm/ReviewForm'
@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/bus",
-        element: <Businesses />
+        element: <AllBusinesses />
       },
       {
         path: "/bus/:busId",
