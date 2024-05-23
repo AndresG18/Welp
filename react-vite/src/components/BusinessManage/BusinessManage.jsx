@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getCurrentBusinessesThunk } from "../../redux/businesses";
 import Businesses from "../Businesses/Businesses";
 import "./BusinessManage.css"
 
 function BusinessManage() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const businessList = useSelector(state => state.businesses?.currentBusinesses?.businesses)
 
   console.log(businessList)
@@ -17,6 +19,11 @@ function BusinessManage() {
       .then(() => setIsLoaded(true))
   }, [dispatch])
 
+  const createBus = (e) => {
+    e.preventDefault()
+    navigate("/bus/new")
+  }
+
   return (
     isLoaded ? (
       businessList && businessList.length > 0 ? (
@@ -26,6 +33,10 @@ function BusinessManage() {
             {businessList.map(business => (
               <Businesses key={business.id} business={business} />
             ))}
+          </div>
+
+          <div>
+            <button onClick={createBus}>Create a New Business</button>
           </div>
         </div>
       ) : (

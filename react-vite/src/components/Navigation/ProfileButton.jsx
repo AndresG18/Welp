@@ -49,6 +49,12 @@ function ProfileButton() {
     closeMenu()
   }
 
+  const createBus = (e) => {
+    e.preventDefault()
+    navigate('/bus/new')
+    closeMenu()
+  }
+
   return (
     <>
       <button onClick={toggleMenu} className="profile-button">
@@ -62,6 +68,9 @@ function ProfileButton() {
               <li>{user.email}</li>
               <li>
                 <button onClick={manageBus}>Your Businesses</button>
+              </li>
+              <li>
+                <button onClick={createBus}>Create a New Businesses</button>
               </li>
               <li>
                 <button onClick={logout}>Log Out</button>
