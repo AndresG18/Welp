@@ -19,11 +19,14 @@
     position: relative;
 }
 
-
 .image-slider {
     display: flex;
     width: calc(480px * 12);
     animation: scrollLeft 80s linear infinite;
+}
+
+.image-slider.bus-prev-img {
+    animation: none;
 }
 
 @keyframes scrollLeft {
@@ -42,27 +45,10 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 190px;
+    top: 200px;
     left: 18%;
-    color: white;
+    color: azure;
 }
-
-.star-icon{
-    width: 20px;
-    height: 20px;
-    margin: 3px;
-    background-color: gold;
-    clip-path: polygon(50% 0%,
-        61% 35%,
-        98% 35%,
-        68% 57%,
-        79% 91%,
-        50% 70%,
-        21% 91%,
-        32% 57%,
-        2% 35%,
-        39% 35%);
-  }
 
 .bus-name {
     margin-bottom: 5px;
@@ -71,6 +57,11 @@
 .review-line {
     display: flex;
     align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.bus-hours {
     margin-bottom: 5px;
 }
 
@@ -92,7 +83,7 @@
 /* ------------------------------------------------ */
 .info-box-right {
     border: 1px solid black;
-    padding-left: 60px;
+    padding: 0 60px 0 60px;
     height: 350px;
 }
 
@@ -149,6 +140,11 @@
     display: flex;
     justify-content: space-between;
     gap: 40px;
+}
+
+.edit-review-btn {
+    height: 30px;
+    width: 130px;
 }
 
 .reviews-white-space {
