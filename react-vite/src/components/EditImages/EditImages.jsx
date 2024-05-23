@@ -29,7 +29,6 @@ export default function EditImages(){
         <div id='edit-images-container'>
             <p>Show thumbnail of all images</p>
             <p>By clicking on thumbnail, delete that image?</p>
-            <p>Unsure how to go about this... o_0?</p>
             <div className='buttons-container'>
                 <button id='edit-btn' onClick={handleEdit}>Edit Images</button>
                 <button id='delete-btn' onClick={(e) => handleSubmit(e)}>Delete Image</button>
