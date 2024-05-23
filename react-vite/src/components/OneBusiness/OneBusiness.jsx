@@ -5,6 +5,7 @@ import { getBusinessByIdThunk } from '../../redux/business';
 import { getReviewsByBusinessIdThunk } from '../../redux/reviews';
 import { getImagesByBusinessIdThunk } from '../../redux/images';
 // import {useModal} from "../../context/Modal";
+import { FaStar } from "react-icons/fa";
 import DeleteBusiness from "../DeleteBusiness";
 import DeleteReview from "../DeleteReview";
 import EditImages from "../EditImages";
@@ -119,10 +120,11 @@ function OneBusiness() {
                     <div className="bus-title-block">
                         <h1 className="bus-name" style={{ fontSize: '50px' }}>{bus.business.name}</h1>
                         <div className="review-line" style={{ fontSize: '20px' }}>
-                            <img className="review-star" src="" alt="star" />
+                            <FaStar />
                             <p className="bus-star-reviews">{bus.business.rating} ({reviews ? reviews.length : 0} reviews)</p>
                         </div>
                         <p className="bus-hours" style={{ fontSize: '20px' }}>{bus.business.hours}</p>
+                        <p style={{ color: "white" }}>{bus.business.price}</p>
                     </div>
 
                     <div className="mid-section">
