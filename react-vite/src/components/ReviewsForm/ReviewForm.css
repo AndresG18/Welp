@@ -1,15 +1,12 @@
 .stars {
   display: flex;
-  /* border: 1px black solid; */
   width: min-content;
   cursor: pointer;
 }
 
 .star {
   width: 20px;
-  /* Adjust the size as needed */
   height: 20px;
-  /* Adjust the size as needed */
   margin: 3px;
   background-color: rgb(75, 75, 75);
   clip-path: polygon(50% 0%,

@@ -12,7 +12,13 @@ const getCurrentBusinesses = (businesses) => ({
   businesses,
 });
 
-export const getAllBusinessesThunk = () => async (dispatch) => {
+export const getAllBusinessesThunk = (page,size) => async (dispatch) => {
+  if(page && size){
+    const response = await fetch(`/api/bus?page=${page}&size=${size}`);
+  const data = await response.json();
+  if (response.ok) dispatch(getAllBusinesses(data));
+  return data;
+  }
   const response = await fetch('/api/bus');
   const data = await response.json();
   if (response.ok) dispatch(getAllBusinesses(data));

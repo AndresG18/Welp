@@ -1,38 +1,119 @@
+
+.all-bus-page {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.searchTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.container-filter-bus {
+  display: flex;
+}
+
+.filter-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  margin-right: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.bus-container {
+  flex: 3;
+}
+
+.bus-container p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
 .search-bar {
-    background-color: rgb(255, 255, 255);
-    width: min-content;
-    display: flex;
-    border: 1px solid black;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input[type="search"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+}
+
+.search-bar input[type="search"]::placeholder {
+  color: #999;
+}
+
+.search-bar .FaSearch {
+  background-color: #0073bb;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.search-bar .FaSearch:hover {
+  background-color: #005f8c;
 }
 
 .loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.loading-spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #0073bb;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  margin-left: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.name-val {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f7f7f7;
-    font-family: Arial, sans-serif;
-  }
-  
-  .loading-spinner {
-    border: 8px solid #f3f3f3; 
-    border-top: 8px solid #CF1000; 
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    animation: spin 1s linear infinite;
-  }
-  
-  /* Spinner animation */
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  /* Loading text */
-  .loading-text {
-    margin-left: 20px;
-    font-size: 24px;
-    color: #333;
-  }
-  
+    flex-direction: row;
+    gap: 5px;
+}

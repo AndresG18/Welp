@@ -17,10 +17,10 @@ export default function Businesses({ business }) {
           <div className="bus-card-reviews">
             <div className='stars'>
               <div className={business.rating > 0 ? 'star active' : 'star'} />
-              <div className={business.rating > 1 ? 'star active' : 'star'} />
-              <div className={business.rating > 2 ? 'star active' : 'star'} />
-              <div className={business.rating > 3 ? 'star active' : 'star'} />
-              <div className={business.rating > 4 ? 'star active' : 'star'} />
+              <div className={business.rating > 1.4 ? 'star active' : 'star'} />
+              <div className={business.rating > 2.4 ? 'star active' : 'star'} />
+              <div className={business.rating > 3.4 ? 'star active' : 'star'} />
+              <div className={business.rating > 4.4 ? 'star active' : 'star'} />
             </div>
             {business.rating}
           </div>
