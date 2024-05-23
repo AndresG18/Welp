@@ -24,18 +24,23 @@ function BusinessManage() {
   }
 
   return (
-    isLoaded && (
-      <div>
-        <div>Your Businesses</div>
+    isLoaded ? (
+      businessList && businessList.length > 0 ? (
         <div>
-          {businessList.map(business => (
-            <Businesses key={business.id} business={business} />
-          ))}
+          <div>Your Businesses</div>
+          <div>
+            {businessList.map(business => (
+              <Businesses key={business.id} business={business} />
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <h1>You own no businesses</h1>
+      )
+    ) : (
+      <div>Loading...</div>
     )
-  )
-
+  );
 }
 
 

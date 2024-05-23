@@ -1,18 +1,16 @@
-import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { FaRegStar } from "react-icons/fa";
 import "./Businesses.css"
 
-const dollarIcons = (range) => {
-  let priceIcons = ""
-  for (let i = 0; i < Number(range); i++) {
-    priceIcons = priceIcons.concat("$");
-  }
-  return priceIcons
-}
+// const dollarIcons = (range) => {
+//   let priceIcons = ""
+//   for (let i = 0; i < Number(range); i++) {
+//     priceIcons = priceIcons.concat("$");
+//   }
+//   return priceIcons
+// }
 
 export default function Businesses({ business }) {
-  const price = dollarIcons(business.price_range)
+  // const price = dollarIcons(business.price_range)
   return (
     <div>
       <NavLink to={`/bus/${business.id}`}>
@@ -38,7 +36,7 @@ export default function Businesses({ business }) {
 
           <div>
             <div>
-              <p>"{business.description}"</p>
+              <p>&quot{business.description}&quot</p>
             </div>
           </div>
         </div>
