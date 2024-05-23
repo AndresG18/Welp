@@ -2,7 +2,7 @@ import './Footer.css'
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import welpLogo from "../Navigation/navlogo.png"
-import daniel from "./daniel.jpg"
+import daniel from "./daniel2.jpeg"
 import andres from "./andres.jpeg"
 import chris from "./chris.jpeg"
 import htmlIcon from "./html.svg"
