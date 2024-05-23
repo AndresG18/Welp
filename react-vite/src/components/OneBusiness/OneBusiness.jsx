@@ -23,7 +23,7 @@ function OneBusiness() {
     const redirect = useNavigate();
 
     const [imagesArray, setImagesArray] = useState([]); // Added for carousel
-    
+
 
     // const {setModalContent} = useModal();
 
@@ -91,14 +91,14 @@ function OneBusiness() {
 
     return (
         <div>
-            {isLoaded && bus &&
+            {isLoaded && bus ?
 
                 <div id='busbyid'>
-                    
+
                     <div className='bus-images-bar'>
                         <div className='image-slider'>
                             {imagesArray.length > 0 && imagesArray.concat(imagesArray, imagesArray, imagesArray, imagesArray).map((image, index) => (
-                                <img key={index} className='bus-quad-pic' src={image.url} alt='business-image'/>
+                                <img key={index} className='bus-quad-pic' src={image.url} alt='business-image' />
                             ))}
                         </div>
                     </div>
@@ -169,15 +169,15 @@ function OneBusiness() {
                                     const user = userList ? userList.find(user => user.id === obj.user_id) : null;
                                     return (
                                         <div className="all-reviews" key={obj.id}>
-                                            
+
                                             <div className="reviewer-entire-block">
                                                 <div className="reviewer-profile-pic">
                                                     {
                                                         user && <img style={{ height: '100px', width: '100px' }}
-                                                        src={user ? user.profile_pic : null} alt="reviewer-pic" />
+                                                            src={user ? user.profile_pic : null} alt="reviewer-pic" />
                                                     }
                                                 </div>
-                                            
+
                                                 <div className="reviewer-text-block">
                                                     <p className="reviewer-name">{user ? user.username : null}</p>
 
@@ -192,7 +192,7 @@ function OneBusiness() {
                                                             <div className={obj.star_rating > 4 ? 'star active' : 'star'} />
                                                         </div>
                                                     </div>
-                                                
+
                                                     {
                                                         sessionUser &&
                                                         obj.user_id === sessionUser.id &&
@@ -210,7 +210,12 @@ function OneBusiness() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> : (
+                    <div className="loading-container">
+                        <div className="loading-spinner"></div>
+                        <div className="loading-text">Loading...</div>
+                    </div>
+                )
             }
         </div>
     )

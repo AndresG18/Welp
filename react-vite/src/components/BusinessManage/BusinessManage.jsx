@@ -43,7 +43,11 @@ function BusinessManage() {
         <h1>You own no businesses</h1>
       )
     ) : (
-      <div>Loading...</div>
+      <div className="loading-container">
+      <div className="loading-spinner"></div>
+      <div className="loading-text">Loading...</div>
+    </div>
+  
     )
   );
 }

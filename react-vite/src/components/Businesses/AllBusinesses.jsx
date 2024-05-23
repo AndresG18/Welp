@@ -6,27 +6,28 @@ import { FaSearch } from "react-icons/fa";
 
 function AllBusinesses() {
   const dispatch = useDispatch();
-  const businessList = useSelector(state => state.businesses?.Businesses?.businesses);
+  const businessList = useSelector(state => state.businesses?.Businesses?.businesses || []);
   const [searched, setSearched] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
   const [filteredList, setFilteredList] = useState([]);
 
   useEffect(() => {
     dispatch(getAllBusinessesThunk())
-      .then(() => setIsLoaded(true));
+      .then(() => {
+        setIsLoaded(true);
+      });
   }, [dispatch]);
 
-  useEffect(()=>{
-    if (searched.trim() === '') setFilteredList(businessList)
-  },[searched])
+  useEffect(() => {
+    setFilteredList(businessList);
+  }, [businessList]);
+
   const handleSearch = () => {
     if (searched.trim() === '') {
-      // If search input is empty, show all businesses
       setFilteredList(businessList);
     } else {
-      // If search input is not empty, filter businesses
-      const filtered = businessList.filter(bus => 
-        bus.name.toLowerCase().includes(searched.toLowerCase()) || 
+      const filtered = businessList.filter(bus =>
+        bus.name.toLowerCase().includes(searched.toLowerCase()) ||
         bus.description.toLowerCase().includes(searched.toLowerCase())
       );
       setFilteredList(filtered);
@@ -35,12 +36,17 @@ function AllBusinesses() {
 
   const searchBar = (
     <div className="search-bar">
-      <input type="search" style={{border:"none"}} value={searched} onChange={(e)=>setSearched(e.target.value)}/>
-      <FaSearch onClick={handleSearch}/>
+      <input
+        type="search"
+        style={{ border: "none" }}
+        value={searched}
+        onChange={(e) => setSearched(e.target.value)}
+      />
+      <FaSearch onClick={handleSearch} />
     </div>
   );
 
-  return isLoaded && (
+  return isLoaded ? (
     <div>
       <p className="searchTitle"> Search for businesses</p>
       {searchBar}
@@ -51,6 +57,12 @@ function AllBusinesses() {
         ))}
       </div>
     </div>
+  ) : (
+    <div className="loading-container">
+    <div className="loading-spinner"></div>
+    <div className="loading-text">Loading...</div>
+  </div>
+
   );
 }
 
