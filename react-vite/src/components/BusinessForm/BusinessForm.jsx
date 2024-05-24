@@ -69,7 +69,7 @@ const BusinessForm = ({ bus }) => {
                 <section className='form-section'>
                     <h3>{"What is the business category?"}</h3>
                     <select value={category_id} onChange={(e) => setCategoryId(e.target.value)}>
-                        <option value={null}>Select one</option>
+                        <option disabled={true}>Select one</option>
                         <option value={1}>Bakery</option>
                         <option value={2}>Restaurant</option>
                         <option value={3}>Cafe</option>

@@ -11,8 +11,8 @@ def authorize(owner_id):
 
 @business_routes.route('')
 def get_all():
-    page = request.args.get('page', 1, type=int)
-    size = request.args.get('size', 10, type=int)
+    page = request.args.get('page' , type=int)
+    size = request.args.get('size', type=int)
     name = request.args.get('name', type=str)
     location = request.args.get('location', type=str)
     price = request.args.get('price')
@@ -91,8 +91,8 @@ def edit(bus_id):
         biz.city = form.data['city']
         biz.state = form.data['state']
         biz.hours = form.data['hours']
-        biz.description = form.data['description'],
-        biz.price = form.data['price'],
+        biz.description = form.data['description']
+        biz.price = form.data['price']
         biz.preview_image = form.data['preview_image']
         db.session.commit()
         return biz.to_dict(), 200

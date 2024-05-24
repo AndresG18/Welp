@@ -17,7 +17,7 @@ body {
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+
 }
 .busForm h1 , .reviewForm h1 , .imageForm{
     text-align: center;
@@ -39,9 +39,7 @@ body {
     align-self: center;
 }
 
-.form-section input,
-.form-section select,
-.form-section textarea {
+.form-section input,.form-section select,.form-section textarea {
     width: 80%;
     padding: 0.5rem;
     margin-top: 0.3rem;

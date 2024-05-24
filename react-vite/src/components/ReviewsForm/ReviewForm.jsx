@@ -21,21 +21,33 @@ const ReviewForm = ({ review }) => {
         dispatch(getReviewByIdThunk(reviewId))
     }, [dispatch, reviewId])
 
+    const validateForm = () => {
+        const newErrors = {};
+
+        if (!reviewText.trim()) newErrors.review = "Description is required";
+        if (!starRating) newErrors.star_rating = "Rating is required";
+        if (starRating < 1 || starRating > 5) newErrors.star_rating = "Rating must be between 1 and 5";
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!validateForm()) return
+
         const reviewObj = {
             review: reviewText,
             star_rating: starRating
         };
 
-        const res = await dispatch(createReviewThunk(busId, reviewObj))
-        console.log(res)
-        const data = review ? await dispatch(editReviewByIdThunk(review.id, reviewObj))
+        const data = review ? await dispatch(editReviewByIdThunk(reviewId, reviewObj))
             : await dispatch(createReviewThunk(busId, reviewObj));
 
         if (data.errors) {
             setErrors(data.errors);
-        }else{
+        } else {
             navigate(`/bus/${busId}`)
         }
     };
