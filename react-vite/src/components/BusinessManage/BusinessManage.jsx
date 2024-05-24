@@ -27,16 +27,16 @@ function BusinessManage() {
   return (
     isLoaded ? (
       businessList && businessList.length > 0 ? (
-        <div>
-          <div>Your Businesses</div>
-          <div>
+        <div className="busForm" style={{minWidth:'80%'}}>
+          <div >Your Businesses</div>
+          <div style={{width:'50rem'}}>
             {businessList.map(business => (
               <Businesses key={business.id} business={business} />
             ))}
           </div>
 
           <div>
-            <button onClick={createBus}>Create a New Business</button>
+            <button  onClick={createBus}>Create a New Business</button>
           </div>
         </div>
       ) : (
