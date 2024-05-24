@@ -145,7 +145,7 @@ function OneBusiness() {
                             {
                                 sessionUser &&
                                 sessionUser.id === bus.business.owner_id &&
-                                <button className="bus-update-btn" style={{height: '30px', width: '130px'}} onClick={updateClick}>Update</button>
+                                <button className="modal-buttons" style={{height: '30px', width: '130px'}} onClick={updateClick}>Update</button>
                             }
                             {
                                 sessionUser &&
