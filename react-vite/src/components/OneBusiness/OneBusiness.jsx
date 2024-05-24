@@ -11,6 +11,7 @@ import DeleteReview from "../DeleteReview";
 import EditImages from "../EditImages";
 import OpenModalButton from '../OpenModalButton';
 import './OneBusiness.css';
+import sadface from './sadface.jpg';
 
 function OneBusiness() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -92,21 +93,28 @@ function OneBusiness() {
 
     const alternateMsg = `We have no phone because we are poor \u{1F605}. Please come and support our business!`
 
+    const manySadFaces = [sadface, sadface, sadface, sadface]
+    const manyManySadFaces = [...manySadFaces, ...manySadFaces, ...manySadFaces, ...manySadFaces, ...manySadFaces]
+
     return (
         <div>
             {isLoaded && bus ?
 
                 <div id='busbyid'>
 
-                    {/* <div className='bus-images-bar'>
+                    <div className='bus-images-bar'>
                         <div className='image-slider'>
+                            {!imagesArray.length && manyManySadFaces.map((image, index) => (
+                                <img key={index} className='sadface' src={image} alt='sad-face'/>
+                            ))}
+
                             {imagesArray.length > 0 && imagesArray.concat(imagesArray, imagesArray, imagesArray, imagesArray).map((image, index) => (
-                                <img key={index} className='bus-quad-pic' src={image.url} alt='business-image' />
+                                <img key={index} className='bus-quad-pic' src={image.url} alt='business-image'/>
                             ))}
                         </div>
-                    </div> */}
+                    </div>
 
-                    <div className='bus-images-bar'>
+                    {/* <div className='bus-images-bar'>
                         <div className='image-slider'>
                             {imagesArray.length > 0 ? imagesArray.concat(imagesArray, imagesArray, imagesArray, imagesArray).map((image, index) => (
                                 <img key={index} className='bus-quad-pic' src={image.url} alt='business-image' />
@@ -114,7 +122,7 @@ function OneBusiness() {
                                 <img className='bus-prev-img' src={bus.business.preview_image} alt='business-preview' />
                             )}
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="bus-title-block">
                         <h1 className="bus-name" style={{fontSize: '50px'}}>{bus.business.name}</h1>
