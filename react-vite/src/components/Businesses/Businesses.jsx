@@ -7,7 +7,7 @@ export default function Businesses({ business }) {
     <div className="bus-card">
       <NavLink to={`/bus/${business.id}`}>
         <div className="bus-card-image">
-          <img src={`${business.preview_image ? business.preview_image : sadface}`} alt={business.name} loading="lazy" style={{ height: "150px", width: "150px" }} />
+          <img src={`${business.preview_image ? business.preview_image : sadface}`} alt={business.name} loading="lazy" className="bus-card-image" />
         </div>
 
         <div className="bus-card-details">
@@ -22,21 +22,38 @@ export default function Businesses({ business }) {
               <div className={business.rating > 2.4 ? 'star active' : 'star'} />
               <div className={business.rating > 3.4 ? 'star active' : 'star'} />
               <div className={business.rating > 4.4 ? 'star active' : 'star'} />
+              <div id="bus-rating" style={{
+                color: business.rating > 4.4 ? '#81FF79' :
+                  business.rating > 3.4 ? '#B6F001' :
+                    business.rating > 2.4 ? '#FFFB4A' :
+                      business.rating > 1.4 ? 'red' :
+                        business.rating > 0 ? 'red' : 'white'
+              }}>
+                {business.rating}
+              </div>
             </div>
-            {business.rating}
           </div>
 
-          <div style={{ color: "green" }}>
-            {business.price}
-          </div>
+          <div className="bus-card-bottom">
+            <div className="bus-price-category">
+              <div id="bus-price">
+                {business.price}
+              </div>
+              <div id="bus-category">
+                {business.category_name}
+              </div>
+            </div>
 
-          <div>
+
             <div>
-              <p>{business.description}</p>
+              <div>
+                <p id="bus-description">"{business.description}"</p>
+              </div>
             </div>
           </div>
+
         </div>
-      </NavLink>
-    </div>
+      </NavLink >
+    </div >
   )
 }
