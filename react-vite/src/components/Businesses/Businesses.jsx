@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom"
 import "./Businesses.css"
+import sadface from './sadface.jpg'
 
 export default function Businesses({ business }) {
   return (
     <div>
       <NavLink to={`/bus/${business.id}`}>
         <div className="bus-card-image">
-          <img src={`${business.preview_image ? business.preview_image : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"}`} alt={business.name} loading="lazy" style={{ height: "150px", width: "150px" }} />
+          <img src={`${business.preview_image ? business.preview_image : sadface}`} alt={business.name} loading="lazy" style={{ height: "150px", width: "150px" }} />
         </div>
 
         <div className="bus-card-details">
