@@ -4,7 +4,7 @@ import sadface from './sadface.jpg'
 
 export default function Businesses({ business }) {
   return (
-    <div>
+    <div className="bus-card">
       <NavLink to={`/bus/${business.id}`}>
         <div className="bus-card-image">
           <img src={`${business.preview_image ? business.preview_image : sadface}`} alt={business.name} loading="lazy" style={{ height: "150px", width: "150px" }} />

@@ -38,6 +38,10 @@ function AllBusinesses() {
     setFilteredList(list);
   }, [categoryId, rating, price, businessList]);
 
+  useEffect(()=>{
+    if (searched.trim() == '') setFilteredList(businessList)
+  },[searched])
+
  
   useEffect(() => {
     dispatch(getAllBusinessesThunk())//add page and size if paginating
@@ -61,7 +65,6 @@ function AllBusinesses() {
   //   setSize(newSize);
   // } PAGINATION FOR FUTURE
   const handleSearch = (e) => {
-    e.preventDefault();
     let filtered = businessList;
 
     if (searched.trim() !== '') {
@@ -80,8 +83,13 @@ function AllBusinesses() {
     if (price) {
       filtered = filtered.filter(bus => bus.price_range >= price);
     }
-
     setFilteredList(filtered);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+     handleSearch();
+    }
   };
 
   const searchBar = (
@@ -91,6 +99,7 @@ function AllBusinesses() {
         style={{ border: "none" }}
         value={searched}
         onChange={(e) => setSearched(e.target.value)}
+        onKeyPress={handleKeyPress}
         placeholder="Search for businesses"
       />
       <FaSearch onClick={handleSearch} />
@@ -217,9 +226,9 @@ function AllBusinesses() {
         </div>
         <div className="bus-container">
           <p>All Results</p>
-          {filteredList.map(business => (
+          { filteredList.length > 0 ? filteredList.map(business => (
             <Businesses key={business.id} business={business} />
-          ))}
+          )) : <h1> No Results Found</h1>}
           {/* <div className="pagination-controls">
             <button onClick={previousPage} disabled={page === 1}>Previous</button> PAGGGINATIONNN
             <span>Page {page}</span>

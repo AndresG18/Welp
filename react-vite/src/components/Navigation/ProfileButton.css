@@ -12,6 +12,7 @@
 
 .profile-button:hover {
   background-color: #9b0101;
+  cursor: pointer;
 }
 
 #icon {
