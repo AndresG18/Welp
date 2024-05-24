@@ -19,7 +19,7 @@ export default function EditImages() {
         <div id='edit-images-container'>
             <h1>Edit Images</h1>
             <div className='buttons-container'>
-                <button id='edit-btn' style={{height: '30px', width: '130px'}} onClick={handleEdit}>Add Images</button>
+                <button className="modal-buttons" style={{height: '30px', width: '130px'}} onClick={handleEdit}>Add Images</button>
                 <OpenModalButton id='delete-btn' buttonText='Delete Images' modalComponent={<DeleteImages busId={busId}/>} beforeOpen={closeModal}/>
             </div>
         </div>

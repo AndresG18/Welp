@@ -99,7 +99,7 @@ p.error {
     cursor: pointer;
 }
 
-.busForm button:hover, .reviewForm button :hover  {
+.busForm button:hover, .reviewForm button :hover  ,.modal-buttons:hover {
     background-color: #b71c1c;
     cursor: pointer;
 }
