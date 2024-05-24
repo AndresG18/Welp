@@ -40,7 +40,7 @@ function AllBusinesses() {
 
   useEffect(()=>{
     if (searched.trim() == '') setFilteredList(businessList)
-  },[searched])
+  },[searched,businessList])
 
  
   useEffect(() => {
@@ -64,7 +64,7 @@ function AllBusinesses() {
   // const changeSize = (newSize) => {
   //   setSize(newSize);
   // } PAGINATION FOR FUTURE
-  const handleSearch = (e) => {
+  const handleSearch = () => {
     let filtered = businessList;
 
     if (searched.trim() !== '') {
@@ -99,7 +99,7 @@ function AllBusinesses() {
         style={{ border: "none" }}
         value={searched}
         onChange={(e) => setSearched(e.target.value)}
-        onKeyPress={handleKeyPress}
+        onKeyDown={handleKeyPress}
         placeholder="Search for businesses"
       />
       <FaSearch onClick={handleSearch} />
