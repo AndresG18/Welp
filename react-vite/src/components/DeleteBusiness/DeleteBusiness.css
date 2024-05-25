@@ -1,4 +1,6 @@
-#delete-business-container{
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+#delete-business-container {
     height: 200px;
     width: 450px;
     display: flex;
@@ -7,13 +9,25 @@
     justify-content: space-evenly;
 }
 
-#yes-btn{
-    margin-right: 30px;
-    height: 40px;
-    width: 140px;
+.title {
+    font-family: Rubik;
+    font-weight: 500;
 }
 
-#no-btn{
-    height: 40px;
-    width: 140px;
+.yes-no-btn {
+    font-family: Rubik;
+    border: none;
+    border-radius: 50px;
+    width: fit-content;
+    padding: 20px;
+    font-size: 15px;
+    font-weight: 500;
+    background-color: #E7E7E7;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.yes-no-btn:hover {
+    background-color: #CF0000;
+    color: white;
 }

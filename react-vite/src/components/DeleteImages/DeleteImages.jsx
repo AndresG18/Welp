@@ -7,8 +7,8 @@ import { getImagesByBusinessIdThunk } from '../../redux/images';
 import './DeleteImages.css';
 
 export default function DeleteImages() {
-    const {closeModal} = useModal();
-    const {busId} = useParams();
+    const { closeModal } = useModal();
+    const { busId } = useParams();
     const dispatch = useDispatch();
     const images = useSelector(state => state.images.images);
     const [imagesArray, setImagesArray] = useState([]);
@@ -34,15 +34,15 @@ export default function DeleteImages() {
     return (
         <div id='delete-images-container'>
             <h1 className='delete-img-title'>Delete Images</h1>
-            <p>Click on the images you would like to delete</p>
+            <p>Click on the image you would like to delete</p>
             <div className='images-buttons-container'>
                 {imagesArray.map(image => (
                     <button key={image.id} className='image-button' onClick={() => handleDelete(image.id)}>
-                        <img className='thumbnail-image' src={image.url} alt='business-image'/>
+                        <img className='thumbnail-image' src={image.url} alt='business-image' />
                     </button>
                 ))}
             </div>
-            <button onClick={closeModal} style={{height: '40px', width: '100px'}}>Close</button>
+            <button onClick={closeModal} className='delete-image-button'>Close</button>
         </div>
     );
 }

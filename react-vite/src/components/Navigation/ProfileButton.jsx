@@ -7,6 +7,7 @@ import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import "./ProfileButton.css"
+import { FaUser } from "react-icons/fa";
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -64,28 +65,27 @@ function ProfileButton() {
         <ul className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <li>Welcome, {user.username}!</li>
-              <li>{user.email}</li>
+              <li className="welcome-user"> <FaUser /> Welcome, {user.username}!</li>
               <li>
-                <button onClick={manageBus}>Your Businesses</button>
+                <button onClick={manageBus} className="logged-in-button">Your Businesses</button>
               </li>
               <li>
-                <button onClick={createBus}>Create a New Businesses</button>
+                <button onClick={createBus} className="logged-in-button">Create a New Business</button>
               </li>
               <li>
-                <button onClick={logout}>Log Out</button>
+                <button onClick={logout} className="logged-in-button">Log Out</button>
               </li>
             </>
           ) : (
             <div className="login-logout-container">
               <OpenModalMenuItem
-                className="button-log"
+                // className="button-log"
                 itemText="Log In"
                 onItemClick={closeMenu}
                 modalComponent={<LoginFormModal />}
               />
               <OpenModalMenuItem
-                className="button-log"
+                // className="button-log"
                 itemText="Sign Up"
                 onItemClick={closeMenu}
                 modalComponent={<SignupFormModal />}
