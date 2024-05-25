@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+.form-section-star {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .stars {
   display: flex;
   width: min-content;
@@ -19,6 +28,7 @@
       32% 57%,
       2% 35%,
       39% 35%);
+  cursor: pointer;
 }
 
 .star :hover {
@@ -28,6 +38,15 @@
 
 .star.active {
   background-color: gold;
+}
+
+#star-numbers {
+  font-family: Rubik;
+  text-align: center;
+  border: none;
+  padding: 6px;
+  background-color: #E7E7E7;
+  border-radius: 20px;
 }
 
 .error {

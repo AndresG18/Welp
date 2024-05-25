@@ -12,6 +12,13 @@
   cursor: pointer;
 }
 
+.welcome-user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
 .profile-button:hover {
   background-color: #9b0101;
   cursor: pointer;
@@ -48,6 +55,22 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
+}
+
+.logged-in-button {
+  border: none;
+  padding: 10px;
+  border-radius: 15px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+}
+
+.logged-in-button:hover {
+  background-color: white;
+  color: black;
 }
 
 #button-log {

@@ -8,8 +8,8 @@
 
 .lower-left-bus-reviews {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
     padding-top: 20px;
 }
 
@@ -98,6 +98,11 @@
 
 .edit-review-btn:hover {
     background-color: #d58e31;
+}
+
+#write-review-button {
+    font-family: Rubik;
+    font-size: 16px;
 }
 
 .modal-buttons {
@@ -235,9 +240,12 @@
 }
 
 .no-reviews {
+    font-family: Rubik;
     display: flex;
-
-    padding: 10px;
+    justify-content: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
 }
 
 .bus-buttons-bar {

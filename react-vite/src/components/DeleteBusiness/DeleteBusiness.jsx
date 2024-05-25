@@ -21,8 +21,8 @@ export default function DeleteBusiness({ busId }) {
     <div id='delete-business-container'>
       <h1 className='title'>Delete this business?</h1>
       <div className='buttons-container'>
-        <button id='yes-btn' onClick={handleSubmit}>YES</button>
-        <button id='no-btn' onClick={closeModal}>NO</button>
+        <button className='yes-no-btn' onClick={handleSubmit}>YES</button>
+        <button className='yes-no-btn' onClick={closeModal}>NO</button>
       </div>
     </div>
   )

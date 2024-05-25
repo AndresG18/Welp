@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 .login-form-modal-container {
   padding: 80px 80px;
   display: flex;
@@ -127,4 +129,11 @@
 .login-signup-buttons:hover {
   background-color: #9b0101;
   cursor: pointer;
+}
+
+.errors {
+  text-wrap: nowrap;
+  color: red;
+  font-family: Rubik;
+  font-size: 12px;
 }

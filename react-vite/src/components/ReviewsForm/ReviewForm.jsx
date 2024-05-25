@@ -66,16 +66,15 @@ const ReviewForm = ({ review }) => {
                     {errors.review && <p className="error">{errors.review}</p>}
                 </section>
                 <section className='form-section-star'>
-                    <h3>{"Star Rating"}</h3>
-                    <div className='stars'>
-                        <div onClick={() => setStarRating(1)} className={starRating > 0 ? 'star active' : 'star'} />
-                        <div onClick={() => setStarRating(2)} className={starRating > 1 ? 'star active' : 'star'} />
-                        <div onClick={() => setStarRating(3)} className={starRating > 2 ? 'star active' : 'star'} />
-                        <div onClick={() => setStarRating(4)} className={starRating > 3 ? 'star active' : 'star'} />
-                        <div onClick={() => setStarRating(5)} className={starRating > 4 ? 'star active' : 'star'} />
-                    </div>
+                    <h3>{"Star Rating: "}</h3>
+                    <div onClick={() => setStarRating(1)} className={starRating > 0 ? 'star active' : 'star'} />
+                    <div onClick={() => setStarRating(2)} className={starRating > 1 ? 'star active' : 'star'} />
+                    <div onClick={() => setStarRating(3)} className={starRating > 2 ? 'star active' : 'star'} />
+                    <div onClick={() => setStarRating(4)} className={starRating > 3 ? 'star active' : 'star'} />
+                    <div onClick={() => setStarRating(5)} className={starRating > 4 ? 'star active' : 'star'} />
                     <input
                         type="number"
+                        id='star-numbers'
                         value={starRating}
                         onChange={(e) => setStarRating(e.target.value)}
                         min="1"

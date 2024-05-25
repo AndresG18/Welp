@@ -160,7 +160,7 @@ function OneBusiness() {
                                 sessionUser &&
                                 sessionUser.id !== bus.business.owner_id &&
                                 !reviews.reviews.find(obj => obj.user_id === sessionUser.id) &&
-                                <button className="bus-review-btn" onClick={reviewClick}>Write Review</button>
+                                <button className="modal-buttons" id="write-review-button" onClick={reviewClick}>Write Review</button>
                             }
                             {
                                 sessionUser &&
@@ -200,7 +200,7 @@ function OneBusiness() {
                         <div className="lower-left-bus-info">
                             <div className="lower-left-bus-reviews">
                                 <h2 className="reviews-title">Reviews</h2>
-                                {!reviews.reviews.length && <p className="no-reviews">No reviews yet</p>}
+                                {!reviews.reviews.length && <p className="no-reviews reviewer-entire-block">Be the first to leave a review!</p>}
                                 {reviews.reviews && reviews.reviews.map(obj => {
                                     const user = userList ? userList.find(user => user.id === obj.user_id) : null;
                                     return (

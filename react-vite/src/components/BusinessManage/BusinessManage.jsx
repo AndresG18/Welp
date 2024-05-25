@@ -27,27 +27,30 @@ function BusinessManage() {
   return (
     isLoaded ? (
       businessList && businessList.length > 0 ? (
-        <div className="busForm" style={{minWidth:'80%'}}>
-          <div >Your Businesses</div>
-          <div style={{width:'50rem'}}>
+        <div className="busForm" style={{ minWidth: '80%' }}>
+          <h1 className="your-bus">Your Businesses</h1>
+          <div style={{ width: '50rem' }}>
             {businessList.map(business => (
               <Businesses key={business.id} business={business} />
             ))}
           </div>
 
           <div>
-            <button  onClick={createBus}>Create a New Business</button>
+            <button onClick={createBus}>Create a New Business</button>
           </div>
         </div>
       ) : (
-        <h1>You own no businesses</h1>
+        <div className="no-owned-bus">
+          <h1 className="your-bus">You own no businesses...😭</h1>
+          <button onClick={createBus} className="create-bus-button">Create a Business</button>
+        </div>
       )
     ) : (
       <div className="loading-container">
-      <div className="loading-spinner"></div>
-      <div className="loading-text">Loading...</div>
-    </div>
-  
+        <div className="loading-spinner"></div>
+        <div className="loading-text">Loading...</div>
+      </div>
+
     )
   );
 }

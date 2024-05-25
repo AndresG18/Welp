@@ -1,13 +1,16 @@
-#delete-images-container{
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+#delete-images-container {
     padding: 20px;
     text-align: center;
+    font-family: Rubik;
 }
 
-.delete-img-title{
+.delete-img-title {
     margin: 20px 0px;
 }
 
-.images-buttons-container{
+.images-buttons-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -15,13 +18,29 @@
     margin: 20px 0px;
 }
 
-.image-button{
+.image-button {
     border: none;
     background: none;
     cursor: pointer;
 }
 
-.thumbnail-image{
+.thumbnail-image {
     width: 200px;
     height: 200px;
+}
+
+.delete-image-button {
+    font-family: Rubik;
+    padding: 20px;
+    font-size: 15px;
+    border-radius: 50px;
+    border: none;
+    background-color: #E7E7E7;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-image-button:hover {
+    background-color: #CF0000;
+    color: white;
 }
