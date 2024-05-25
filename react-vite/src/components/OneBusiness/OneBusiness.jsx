@@ -12,12 +12,16 @@ import EditImages from "../EditImages";
 import OpenModalButton from '../OpenModalButton';
 import './OneBusiness.css';
 import sadface from './sadface.jpg';
+import { FaStoreAlt } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
+import { FaAddressBook } from "react-icons/fa";
+import { FaLocationArrow } from "react-icons/fa";
 
 function OneBusiness() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [userList, setUserList] = useState([]);
     const dispatch = useDispatch();
-    const {busId} = useParams();
+    const { busId } = useParams();
     const bus = useSelector(state => state.business.business);
     const reviews = useSelector(state => state.reviews.reviews);
     const sessionUser = useSelector(state => state.session.user);
@@ -74,24 +78,24 @@ function OneBusiness() {
 
     const phoneArr = [
         '818-111-1111',
-        // '202-495-2222',
-        // '213-304-3333',
-        // '416-775-4444',
-        // '481-235-5555',
-        // '308-952-6666',
-        // '556-954-7777',
-        // '626-800-8888',
-        // '818-616-9999',
-        // '818-321-0000',
-        // '909-751-1234',
-        // '213-954-5678',
-        // '818-493-9012',
-        // '466-118-3456',
-        // '312-418-7890',
-        // '781-731-1234'
+        '202-495-2222',
+        '213-304-3333',
+        '416-775-4444',
+        '481-235-5555',
+        '308-952-6666',
+        '556-954-7777',
+        '626-800-8888',
+        '818-616-9999',
+        '818-321-0000',
+        '909-751-1234',
+        '213-954-5678',
+        '818-493-9012',
+        '466-118-3456',
+        '312-418-7890',
+        '781-731-1234'
     ]
 
-    const alternateMsg = `We have no phone because we are poor \u{1F605}. Please come and support our business!`
+    const alternateMsg = `No Phone Number Available...`
 
     const manySadFaces = [sadface, sadface, sadface, sadface]
     const manyManySadFaces = [...manySadFaces, ...manySadFaces, ...manySadFaces, ...manySadFaces, ...manySadFaces]
@@ -105,11 +109,17 @@ function OneBusiness() {
                     <div className='bus-images-bar'>
                         <div className='image-slider'>
                             {!imagesArray.length && manyManySadFaces.map((image, index) => (
-                                <img key={index} className='sadface' src={image} alt='sad-face'/>
+                                <div key={index} className='image-container'>
+                                    <img className='sadface' src={image} alt='sad-face' />
+                                    <div className='overlay'></div>
+                                </div>
                             ))}
 
                             {imagesArray.length > 0 && imagesArray.concat(imagesArray, imagesArray, imagesArray, imagesArray).map((image, index) => (
-                                <img key={index} className='bus-quad-pic' src={image.url} alt='business-image'/>
+                                <div key={index} className='image-container'>
+                                    <img className='bus-quad-pic' src={image.url} alt='business-image' />
+                                    <div className='overlay'></div>
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -125,58 +135,72 @@ function OneBusiness() {
                     </div> */}
 
                     <div className="bus-title-block">
-                        <h1 className="bus-name" style={{fontSize: '50px'}}>{bus.business.name}</h1>
-                        <div className="review-line" style={{fontSize: '20px', fontWeight: 'bolder'}}>
-                            <FaStar/>
+                        <h1 className="bus-name" style={{ fontSize: '50px' }}>{bus.business.name}</h1>
+                        <div className="review-line" style={{ fontSize: '20px', fontWeight: 'bolder' }}>
+                            <FaStar style={{
+                                color: bus.business.rating > 4.4 ? '#81FF79' :
+                                    bus.business.rating > 3.4 ? '#B6F001' :
+                                        bus.business.rating > 2.4 ? '#FFFB4A' :
+                                            bus.business.rating > 1.4 ? 'red' :
+                                                bus.business.rating > 0 ? 'red' : 'white'
+                            }} />
                             <p className="bus-star-reviews">{bus.business.rating} ({reviews.reviews.length} reviews)</p>
                         </div>
-                        <p className="bus-hours" style={{fontSize: '20px', fontWeight: 'bolder', marginLeft: '2px'}}>Open today from {bus.business.hours}</p>
-                        <p className="price" style={{fontSize: '20px',fontWeight: 'bolder', marginLeft: '2px'}}>{bus.business.price}</p>
+                        <p className="bus-hours" style={{ fontSize: '20px', marginLeft: '2px', fontWeight: "bolder" }}> <span id="open-sign">OPEN</span> {bus.business.hours}</p>
+                        <div id="category-price-block-onebus">
+                            <p className="price" style={{ fontSize: '20px', marginLeft: '2px', color: "#02C585", fontWeight: "bolder" }}>{bus.business.price}</p>
+
+                            <p className="cat-onebus">{bus.business.category_name}</p>
+                        </div>
                     </div>
 
-                    <div className="mid-section">
+                    <div className="button-reviews-info">
                         <div className="bus-buttons-bar">
                             {
                                 sessionUser &&
                                 sessionUser.id !== bus.business.owner_id &&
                                 !reviews.reviews.find(obj => obj.user_id === sessionUser.id) &&
-                                <button className="bus-review-btn" style={{height: '30px', width: '130px'}} onClick={reviewClick}>Write Review</button>
+                                <button className="bus-review-btn" onClick={reviewClick}>Write Review</button>
                             }
                             {
                                 sessionUser &&
                                 sessionUser.id === bus.business.owner_id &&
-                                <button className="modal-buttons" style={{height: '30px', width: '130px'}} onClick={updateClick}>Update</button>
+                                <button className="modal-buttons" onClick={updateClick}>Update</button>
                             }
                             {
                                 sessionUser &&
                                 sessionUser.id === bus.business.owner_id &&
-                                (<OpenModalButton className='delete-bus' buttonText='Delete' modalComponent={<DeleteBusiness busId={busId}/>}/>)
+                                (<OpenModalButton className='delete-bus' buttonText='Delete' modalComponent={<DeleteBusiness busId={busId} />} />)
                             }
                             {
                                 sessionUser &&
                                 sessionUser.id === bus.business.owner_id &&
-                                (<OpenModalButton className='edit-bus-images' buttonText='Images' modalComponent={<EditImages busId={busId}/>}/>)
+                                (<OpenModalButton className='edit-bus-images' buttonText='Images' modalComponent={<EditImages busId={busId} />} />)
                             }
                         </div>
 
-                        <div className="info-box-right">
-                            <h3 className="info-box-1" style={{fontSize: '30px'}}>{bus.business.category_name}</h3>
-                            <h4 className="info-box-2" style={{fontSize: phoneArr[bus.business.id - 1] ? '22px' : '18px'}}>
-                                {phoneArr[bus.business.id - 1] ? phoneArr[bus.business.id - 1] : alternateMsg}
-                            </h4>
-                            <h4 className="info-box-3" style={{fontSize: '22px'}}>{bus.business.address}</h4>
-                            <h4 className="info-box-4" style={{fontSize: '22px'}}>{bus.business.city}, {bus.business.state}</h4>
-                        </div>
-
-                        <div className="lower-left-bus-info">
+                        <div className="description-plus-info">
                             <div className="bus-description">
-                                <h2 className="description-text">From this business</h2>
-                                <h3>{bus.business.description}</h3>
+                                <h2 className="description-title">From this business</h2>
+                                <p className="description-text">"{bus.business.description}"</p>
                             </div>
 
+                            <div className="info-box">
+                                <p className="info-box-1"> <FaStoreAlt /> {bus.business.category_name}</p>
+                                <p className="info-box-2">
+                                    <FaPhoneAlt /> {phoneArr[bus.business.id - 1] ? phoneArr[bus.business.id - 1] : alternateMsg}
+                                </p>
+                                <p className="info-box-3"> <FaAddressBook />{bus.business.address}</p>
+                                <p className="info-box-4"> <FaLocationArrow />{bus.business.city}, {bus.business.state}</p>
+                            </div>
+
+                        </div>
+
+
+                        <div className="lower-left-bus-info">
                             <div className="lower-left-bus-reviews">
                                 <h2 className="reviews-title">Reviews</h2>
-                                {!reviews.reviews.length && <p>No reviews yet</p>}
+                                {!reviews.reviews.length && <p className="no-reviews">No reviews yet</p>}
                                 {reviews.reviews && reviews.reviews.map(obj => {
                                     const user = userList ? userList.find(user => user.id === obj.user_id) : null;
                                     return (
@@ -185,8 +209,8 @@ function OneBusiness() {
                                             <div className="reviewer-entire-block">
                                                 <div className="reviewer-profile-pic">
                                                     {
-                                                        user && <img style={{height: '100px', width: '100px'}}
-                                                        src={user ? user.profile_pic : null} alt="reviewer-pic"/>
+                                                        user && <img style={{ height: '100px', width: '100px' }}
+                                                            src={user ? user.profile_pic : null} alt="reviewer-pic" />
                                                     }
                                                 </div>
 
@@ -197,11 +221,11 @@ function OneBusiness() {
 
                                                     <div className="star-rating-group">
                                                         <div className='stars'>
-                                                            <div className={obj.star_rating > 0 ? 'star active' : 'star'}/>
-                                                            <div className={obj.star_rating > 1 ? 'star active' : 'star'}/>
-                                                            <div className={obj.star_rating > 2 ? 'star active' : 'star'}/>
-                                                            <div className={obj.star_rating > 3 ? 'star active' : 'star'}/>
-                                                            <div className={obj.star_rating > 4 ? 'star active' : 'star'}/>
+                                                            <div className={obj.star_rating > 0 ? 'star active' : 'star'} />
+                                                            <div className={obj.star_rating > 1 ? 'star active' : 'star'} />
+                                                            <div className={obj.star_rating > 2 ? 'star active' : 'star'} />
+                                                            <div className={obj.star_rating > 3 ? 'star active' : 'star'} />
+                                                            <div className={obj.star_rating > 4 ? 'star active' : 'star'} />
                                                         </div>
                                                     </div>
 
@@ -209,7 +233,7 @@ function OneBusiness() {
                                                         sessionUser &&
                                                         obj.user_id === sessionUser.id &&
                                                         (<div className="reviews-button-block">
-                                                            <OpenModalButton buttonText='Delete' modalComponent={<DeleteReview busId={busId} reviewId={obj.id}/>}/>
+                                                            <OpenModalButton buttonText='Delete' modalComponent={<DeleteReview busId={busId} reviewId={obj.id} />} />
                                                             <button className="edit-review-btn" onClick={() => redirect(`/bus/${busId}/reviews/${obj.id}/edit`)}>Edit</button>
                                                         </div>)
                                                     }
@@ -222,6 +246,8 @@ function OneBusiness() {
                             </div>
                         </div>
                     </div>
+
+
                 </div> : (
                     <div className="loading-container">
                         <div className="loading-spinner"></div>

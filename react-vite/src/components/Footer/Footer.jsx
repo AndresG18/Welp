@@ -27,8 +27,8 @@ function Footer() {
             <p>Andres Garcia</p>
             <img src={andres} className='dev-headshot' />
             <div className='dev-intros-links'>
-              <a href="" className='dev-git-linkedin' target="_blank" rel="noreferrer"><FaGithub id='github-fa' />Github</a>
-              <a href="" className='dev-git-linkedin' target="_blank" rel="noreferrer"><FaLinkedin id='github-fa' />LinkedIn</a>
+              <a href="https://github.com/AndresG18" className='dev-git-linkedin' target="_blank" rel="noreferrer"><FaGithub id='github-fa' />Github</a>
+              <a href="https://www.linkedin.com/in/andres-garcia-047727238/" className='dev-git-linkedin' target="_blank" rel="noreferrer"><FaLinkedin id='github-fa' />LinkedIn</a>
             </div>
           </div>
 
@@ -36,8 +36,8 @@ function Footer() {
             <p>Daniel Choi</p>
             <img src={daniel} className='dev-headshot' />
             <div className='dev-intros-links'>
-              <a href="" className='dev-git-linkedin' target="_blank" rel="noreferrer"><FaGithub id='github-fa' />Github</a>
-              <a href="" className='dev-git-linkedin' target="_blank" rel="noreferrer"><FaLinkedin id='github-fa' />LinkedIn</a>
+              <a href="https://github.com/dschoi91011" className='dev-git-linkedin' target="_blank" rel="noreferrer"><FaGithub id='github-fa' />Github</a>
+              <a href="https://www.linkedin.com/in/daniel-choi-905970275/" className='dev-git-linkedin' target="_blank" rel="noreferrer"><FaLinkedin id='github-fa' />LinkedIn</a>
             </div>
           </div>
 
