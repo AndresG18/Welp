@@ -29,7 +29,7 @@ function BusinessManage() {
       businessList && businessList.length > 0 ? (
         <div className="busForm" style={{ minWidth: '80%' }}>
           <h1 className="your-bus">Your Businesses</h1>
-          <div style={{ width: '50rem' }}>
+          <div >
             {businessList.map(business => (
               <Businesses key={business.id} business={business} />
             ))}

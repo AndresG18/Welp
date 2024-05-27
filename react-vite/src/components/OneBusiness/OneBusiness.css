@@ -63,6 +63,8 @@
     margin-bottom: 15px;
     line-height: 1.4;
     color: #555;
+    word-wrap: break-word;
+    width: 75%;
 }
 
 
@@ -349,4 +351,16 @@
     margin-top: 20px;
     font-size: 20px;
     color: #333;
+}
+@media (max-width: 768px) {
+    .bus-title-block{
+        gap: 0px;
+    }
+    .reviews-button-block{
+        width: 70%;
+    }
+    .info-box{
+        padding: 12px;
+        margin-right: 5px;
+    }
 }

@@ -317,3 +317,68 @@
 .pagination-controls span {
   font-size: 16px;
 }
+
+@media (max-width: 768px) {
+  .all-bus-page {
+    padding: 10px;
+  }
+  .filter-container{
+    position: relative;
+  }
+
+  .search-container {
+    margin-bottom: 15px;
+  }
+
+  .search-bar {
+    width: 100%;
+    max-width: none;
+  }
+
+  .container-filter-bus {
+    flex-direction: column;
+  }
+
+  .filter-container {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .bus-container {
+    width: 100%;
+  }
+
+  .bus-card , .bus-card> * {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bus-card-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .bus-card-details {
+    padding: 10px;
+    width: 100%;
+  }
+
+  .bus-detail-name {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .bus-card-reviews {
+    justify-content: center;
+  }
+
+  .bus-price-category {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  #bus-description {
+    text-align: center;
+  }
+}
+
