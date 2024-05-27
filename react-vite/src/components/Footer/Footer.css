@@ -107,3 +107,19 @@
 #tech-title-underline {
   text-decoration: underline;
 }
+
+@media only screen and (max-width: 768px) {
+  .intro-dev-area,
+  .dev-intros-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dev-intros-container {
+    gap: 10px;
+  }
+
+  .tech-box-main {
+    gap: 15px;
+  }
+}
