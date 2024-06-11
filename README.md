@@ -28,7 +28,7 @@ The user is able to write, edit, and delete reviews and leave ratings for said b
 - Google Maps API implementation
 - Connecting to friends
 
-## Getting started
+## Getting started:
 
 1. Clone this repository (only this branch).
 
@@ -78,7 +78,7 @@ The user is able to write, edit, and delete reviews and leave ratings for said b
    folder whenever you change your code, keeping the production version up to
    date.
 
-## Deployment through Render.com
+## Deployment through Render.com:
 
 First, recall that Vite is a development dependency, so it will not be used in
 production. This means that you must already have the __dist__ folder located in
