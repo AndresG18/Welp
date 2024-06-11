@@ -1,6 +1,6 @@
 # Welp
 
-[To live site: ](https://welp-m0r8.onrender.com/)
+Check out our site(https://welp-m0r8.onrender.com/)
 
 ## Getting started
 
