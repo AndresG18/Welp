@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField,IntegerField, SelectField,FloatField
-from wtforms.validators import DataRequired, Email, ValidationError,Length
+from wtforms.validators import DataRequired, Email, ValidationError,Length,NumberRange
 
 class BusinessForm(FlaskForm):
     category_id = IntegerField('Category_id', validators=[DataRequired()])
@@ -8,8 +8,8 @@ class BusinessForm(FlaskForm):
     address = StringField('Address', validators=[DataRequired(), Length(min= 0 ,max= 30)])
     city = StringField('City', validators=[DataRequired(), Length(min= 0 ,max= 20)])
     state = StringField('State', validators=[DataRequired(), Length(min= 0 ,max= 20)])
-    latitude = FloatField('Latitude', validators=[DataRequired()])
-    longitude = FloatField('Longitude', validators=[DataRequired()])
+    latitude = FloatField('Latitude', validators=[DataRequired(), NumberRange(min=-90, max=90, message="Latitude must be between -90 and 90")])
+    longitude = FloatField('Longitude', validators=[DataRequired(), NumberRange(min=-180, max=180, message="Longitude must be between -180 and 180")])
     hours = StringField('Hours', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired(), Length(min= 0 ,max= 200)])
     price = StringField('Price', validators=[DataRequired()])

@@ -55,7 +55,7 @@ class Business(db.Model):
             'latitude': self.latitude,
             'longitude': self.longitude,
             'hours': self.hours,
-            'days_of_week_open': self.days_open,
+            'days_open': self.days_open,
             'description': self.description,
             'price': self.price_range(),
             'price_range': self.price,
