@@ -7,7 +7,7 @@ Our site allows users to create their own account, peruse existing users' busine
 The user is able to write, edit, and delete reviews and leave ratings for said businesses. The user is also able to create and manage his/her own businesses.
 
 ## Meet the team
-- Andres Garcia: [!(https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andres-garcia-047727238/)
+- Andres Garcia: [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andres-garcia-047727238/)
 - [Chris Kang](https://www.linkedin.com/in/chris-kang247/)
 - [Daniel Choi](https://www.linkedin.com/in/daniel-choi-905970275/)
 
