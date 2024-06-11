@@ -6,7 +6,7 @@ Welp is inspired by Yelp, which is itself a prominent online platform that conne
 Our site allows users to create their own account, peruse existing users' businesses, searched by a myriad of different categories.
 The user is able to write, edit, and delete reviews and leave ratings for said businesses. The user is also able to create and manage his/her own businesses.
 
-[Check us out!](https://welp-m0r8.onrender.com/)
+[Live Site](https://welp-m0r8.onrender.com/)
 
 ## Meet the devs:
 - Andres Garcia: [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andres-garcia-047727238/)[![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AndresG18)
