@@ -1,10 +1,10 @@
 ![logowhitebig](https://github.com/ckang021/welp/assets/104466769/e6505998-4e38-4a10-b5d5-8f5768072e19)
 
-## [Check out our site](https://welp-m0r8.onrender.com/)
-
 Welp is inspired by Yelp, which is itself a prominent online platform that connects its users to local businesses. 
 Our site allows users to create their own account, peruse existing users' businesses, searched by a myriad of different categories.
 The user is able to write, edit, and delete reviews and leave ratings for said businesses. The user is also able to create and manage his/her own businesses.
+
+[Check out our site](https://welp-m0r8.onrender.com/)
 
 ## Meet the team
 - Andres Garcia: [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andres-garcia-047727238/)
