@@ -1,4 +1,4 @@
-# Welp
+![logowhitebig](https://github.com/ckang021/welp/assets/104466769/e6505998-4e38-4a10-b5d5-8f5768072e19)
 
 ## [Check out our site](https://welp-m0r8.onrender.com/)
 
