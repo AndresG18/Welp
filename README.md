@@ -8,6 +8,13 @@ Welp is inspired by Yelp, which is itself a prominent online platform that conne
 Our site allows users to create their own account, peruse existing users' businesses, searched by a myriad of different categories.
 The user is able to write, edit, and delete reviews and leave ratings for said businesses. The user is also able to create and manage his/her own businesses.
 
+## Meet the team
+
+## Future features
+
+- Google Maps API implementation
+- Connecting to friends
+
 ## Getting started
 
 1. Clone this repository (only this branch).
