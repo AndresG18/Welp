@@ -1,5 +1,6 @@
 # Welp
 
+## Link
 [Check out our site](https://welp-m0r8.onrender.com/)
 
 ## Getting started
@@ -52,7 +53,7 @@
    folder whenever you change your code, keeping the production version up to
    date.
 
-## Deployment through Render.com
+### Deployment through Render.com
 
 First, recall that Vite is a development dependency, so it will not be used in
 production. This means that you must already have the __dist__ folder located in
