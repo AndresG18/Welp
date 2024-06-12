@@ -9,19 +9,22 @@ class Business(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('categories.id')), nullable=False)
-    name = db.Column(db.String(30),nullable=False)
-    address = db.Column(db.String(40),nullable=False)
+    name = db.Column(db.String(30), nullable=False)
+    address = db.Column(db.String(40), nullable=False)
     city = db.Column(db.String(20), nullable=False)
     state = db.Column(db.String(20), nullable=False)
-    hours = db.Column(db.String, nullable=False)
     description = db.Column(db.String(200), nullable=False)
+    hours = db.Column(db.String, nullable=False)
+    days_open = db.Column(db.String, nullable=False)  
+    latitude = db.Column(db.Float, nullable=False)
+    longitude = db.Column(db.Float, nullable=False)
     price = db.Column(db.String(20), nullable=False)
     preview_image = db.Column(db.String, nullable=False)
 
     owner = db.relationship('User', back_populates='business')
     category = db.relationship('Category', back_populates='businesses')
     images = db.relationship('BusinessImage', back_populates='business', cascade="all, delete-orphan")
-    reviews = db.relationship('Review',back_populates='business', cascade="all, delete-orphan")
+    reviews = db.relationship('Review', back_populates='business', cascade="all, delete-orphan")
 
     def get_average_rating(self):
         total_rating = sum(review.star_rating for review in self.reviews)
@@ -32,9 +35,9 @@ class Business(db.Model):
         return round(avg_rated, 1)
 
     def price_range(self):
-        if self.price == 'Low' : return  "$"
-        if self.price == 'Medium' : return  "$$"
-        if self.price == 'High' : return  "$$$"
+        if self.price == 'Low': return "$"
+        if self.price == 'Medium': return "$$"
+        if self.price == 'High': return "$$$"
 
     def category_name(self):
         return self.category.name
@@ -47,12 +50,15 @@ class Business(db.Model):
             'category_name': self.category_name(),
             'name': self.name,
             'address': self.address,
-            'city' : self.city,
-            'state' : self.state,
-            'hours' : self.hours,
-            'description' : self.description,
+            'city': self.city,
+            'state': self.state,
+            'latitude': self.latitude,
+            'longitude': self.longitude,
+            'hours': self.hours,
+            'days_open': self.days_open,
+            'description': self.description,
             'price': self.price_range(),
-            'price_range':self.price,
-            'preview_image' : self.preview_image,
+            'price_range': self.price,
+            'preview_image': self.preview_image,
             'rating': self.get_average_rating()
         }
