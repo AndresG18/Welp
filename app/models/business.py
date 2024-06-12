@@ -13,11 +13,11 @@ class Business(db.Model):
     address = db.Column(db.String(40), nullable=False)
     city = db.Column(db.String(20), nullable=False)
     state = db.Column(db.String(20), nullable=False)
+    description = db.Column(db.String(200), nullable=False)
+    hours = db.Column(db.String, nullable=False)
+    days_open = db.Column(db.String, nullable=False)  
     latitude = db.Column(db.Float, nullable=False)
     longitude = db.Column(db.Float, nullable=False)
-    hours = db.Column(db.String, nullable=False)
-    days_open = db.Column(db.String, nullable=False)  # New column
-    description = db.Column(db.String(200), nullable=False)
     price = db.Column(db.String(20), nullable=False)
     preview_image = db.Column(db.String, nullable=False)
 

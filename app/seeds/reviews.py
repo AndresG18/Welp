@@ -51,7 +51,23 @@ def seed_reviews():
         {"user_id": 4, "business_id": 15, "review": "Not bad, but expected more variety.", "star_rating": 2},
         {"user_id": 1, "business_id": 16, "review": "Great local products and friendly staff.", "star_rating": 5},
         {"user_id": 2, "business_id": 16, "review": "Interesting selection of items.", "star_rating": 4},
-        {"user_id": 3, "business_id": 16, "review": "Good store, but could use more variety.", "star_rating": 3}
+        {"user_id": 3, "business_id": 16, "review": "Good store, but could use more variety.", "star_rating": 3},
+        {"user_id": 1, "business_id": 17, "review": "Absolutely delicious pastries and a cozy atmosphere.", "star_rating": 5},
+        {"user_id": 2, "business_id": 17, "review": "Great variety of baked goods, but a bit pricey.", "star_rating": 3},
+        {"user_id": 3, "business_id": 17, "review": "Amazing bread, though service can be slow.", "star_rating": 4},
+        {"user_id": 4, "business_id": 17, "review": "Loved the croissants, cakes are too sweet.", "star_rating": 3},
+        {"user_id": 1, "business_id": 18, "review": "Amazing gourmet dishes and fantastic ambiance.", "star_rating": 5},
+        {"user_id": 2, "business_id": 18, "review": "Good food but quite steep prices.", "star_rating": 3},
+        {"user_id": 3, "business_id": 18, "review": "Great service and delicious food, small portions.", "star_rating": 4},
+        {"user_id": 4, "business_id": 18, "review": "Good food but not worth the high prices.", "star_rating": 2},
+        {"user_id": 1, "business_id": 19, "review": "Best coffee in town with a great atmosphere!", "star_rating": 5},
+        {"user_id": 2, "business_id": 19, "review": "Nice place to work, but the coffee is a bit overpriced.", "star_rating": 3},
+        {"user_id": 3, "business_id": 19, "review": "Loved the specialty coffees and the friendly staff.", "star_rating": 4},
+        {"user_id": 4, "business_id": 19, "review": "Good coffee, but the place can get quite crowded.", "star_rating": 3},
+        {"user_id": 1, "business_id": 20, "review": "Fantastic selection of organic products and friendly staff.", "star_rating": 5},
+        {"user_id": 2, "business_id": 20, "review": "Great variety, but some items are overpriced.", "star_rating": 3},
+        {"user_id": 3, "business_id": 20, "review": "Loved the fresh produce and local products.", "star_rating": 4},
+        {"user_id": 4, "business_id": 20, "review": "Good market, but could use more variety.", "star_rating": 3}
     ]
 
     create_reviews = [Review(**review) for review in all_reviews]
