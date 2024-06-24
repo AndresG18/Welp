@@ -1,6 +1,6 @@
 ![logowhitebig](https://github.com/ckang021/welp/assets/104466769/e6505998-4e38-4a10-b5d5-8f5768072e19)
 
-##
+## Welp
 
 Welp is inspired by Yelp, which is itself a prominent online platform that connects its users to local businesses. 
 Our site allows users to create their own account and peruse existing users' businesses, searched by a myriad of different categories.
@@ -11,6 +11,8 @@ The user is able to write, edit, and delete reviews and leave ratings for said b
 ## Screenshots:
 ![ScreenRecording2024-06-23at7 18 38PM-ezgif com-video-to-gif-converter](https://github.com/ckang021/welp/assets/104466769/68694a40-0bfd-4150-9bac-2890973de067)
 ![ScreenRecording2024-06-23at7 18 15PM-ezgif com-video-to-gif-converter](https://github.com/ckang021/welp/assets/104466769/49580134-7d9d-4c4f-b585-56fcfb35104f)
+![ScreenRecording2024-06-23at7 41 49PM-ezgif com-video-to-gif-converter](https://github.com/ckang021/welp/assets/104466769/0bcfbb96-34dd-44f8-a8f7-f1aa9c2bab9b)
+
 
 ## Meet the devs:
 - Andres Garcia:  [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andres-garcia-047727238/)[![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AndresG18)
