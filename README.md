@@ -9,6 +9,8 @@ The user is able to write, edit, and delete reviews and leave ratings for said b
 [Live Site](https://welp-m0r8.onrender.com/)
 
 ## Screenshots:
+![ScreenRecording2024-06-23at7 18 38PM-ezgif com-video-to-gif-converter](https://github.com/ckang021/welp/assets/104466769/68694a40-0bfd-4150-9bac-2890973de067)
+![ScreenRecording2024-06-23at7 18 15PM-ezgif com-video-to-gif-converter](https://github.com/ckang021/welp/assets/104466769/49580134-7d9d-4c4f-b585-56fcfb35104f)
 
 ## Meet the devs:
 - Andres Garcia:  [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andres-garcia-047727238/)[![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AndresG18)
