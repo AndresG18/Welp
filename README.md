@@ -9,6 +9,7 @@ The user is able to write, edit, and delete reviews and leave ratings for said b
 [Live Site](https://welp-m0r8.onrender.com/)
 
 ## Screenshots:
+![ScreenRecording2024-06-23at7 11 00PM-ezgif com-video-to-gif-converter](https://github.com/ckang021/welp/assets/104466769/dc9c3895-73aa-44f7-8c43-b353fdf7b40d)
 ![ScreenRecording2024-06-23at7 18 38PM-ezgif com-video-to-gif-converter](https://github.com/ckang021/welp/assets/104466769/68694a40-0bfd-4150-9bac-2890973de067)
 ![ScreenRecording2024-06-23at7 41 49PM-ezgif com-video-to-gif-converter](https://github.com/ckang021/welp/assets/104466769/0bcfbb96-34dd-44f8-a8f7-f1aa9c2bab9b)
 
