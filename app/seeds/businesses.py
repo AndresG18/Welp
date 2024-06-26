@@ -263,7 +263,7 @@ def seed_businesses():
             "longitude": -122.4194,
             "description": "Artisan bakery offering a variety of freshly baked breads, pastries, and cakes.",
             "price": "Medium",
-            "preview_image": "https://images.unsplash.com/photo-1511018556340-d16986a1c194?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            "preview_image": "https://unsplash.com/photos/seller-making-arrangements-on-the-shelves-in-the-store-with-bakery-products-tC7LFlKdF0g"
         },
         {
             "owner_id": 2,
@@ -278,7 +278,7 @@ def seed_businesses():
             "longitude": -74.0060,
             "description": "Fine dining restaurant offering a diverse menu with gourmet dishes.",
             "price": "High",
-            "preview_image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            "preview_image": "https://unsplash.com/photos/close-image-of-hand-with-glass-of-champagne-sweet-dessert-on-grey-dish-beared-man-in-tuxedo-drinking-nBqT-8nILlg"
         },
         {
             "owner_id": 3,
@@ -293,7 +293,7 @@ def seed_businesses():
             "longitude": -87.6298,
             "description": "Trendy cafe known for its specialty coffee and relaxed atmosphere.",
             "price": "Low",
-            "preview_image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            "preview_image": "https://unsplash.com/photos/a-couple-of-tea-cups-on-a-table-M7-ikT4vrXs"
         },
         {
             "owner_id": 4,
@@ -308,7 +308,7 @@ def seed_businesses():
             "longitude": -122.6784,
             "description": "Local market offering organic and locally sourced products.",
             "price": "Medium",
-            "preview_image": "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            "preview_image": "https://unsplash.com/photos/a-bunch-of-plants-that-are-on-a-shelf-kCR21du5XDA"
         },
 
     ]
