@@ -55,14 +55,14 @@ function LoginFormModal() {
         <p id="smaller-text-login">By proceeding, you agree to Welp&apos;s Terms of Service and acknowledge Welp&apos;s Privacy Policy.</p>
       </div>
 
-      <div className="google-apple-button">
+      {/* <div className="google-apple-button">
         <button onClick={featureComing} id="google" className="social-buttons"><FaGoogle className="fa-google-apple" />Continue with Google</button>
         <button onClick={featureComing} id="apple" className="social-buttons"><FaApple className="fa-google-apple" />Continue with Apple</button>
       </div>
 
       <div id="or-login-container">
         <div id="or-login">or</div>
-      </div>
+      </div> */}
 
 
       <form onSubmit={handleSubmit} className="form-login-container">
