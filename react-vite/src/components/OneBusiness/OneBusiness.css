@@ -364,3 +364,10 @@
         margin-right: 5px;
     }
 }
+.Map{
+    height: 20vw;
+    width: 70vh;
+    margin: auto;
+    /* margin-left: 21%; */
+    margin-top: 5%;
+}
