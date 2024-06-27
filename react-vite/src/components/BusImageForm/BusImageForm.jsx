@@ -13,7 +13,7 @@ const BusinessImageForm = () => {
     const user = useSelector(state => state.session.user);
     const business = useSelector(state => state?.business?.business?.business)
     const { busId } = useParams()
-    console.log(business)
+    // console.log(business)
 
     useEffect(() => {
         dispatch(getBusinessByIdThunk(busId))

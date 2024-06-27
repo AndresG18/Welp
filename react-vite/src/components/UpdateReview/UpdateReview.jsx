@@ -10,8 +10,8 @@ export default function UpdateReview() {
   const { reviewId } = useParams()
   const reviewFilter = reviews.filter(review => review.id == reviewId)
 
-  console.log(reviewId)
-  console.log(reviewFilter)
+  // console.log(reviewId)
+  // console.log(reviewFilter)
 
   useEffect(() => {
     if (!reviews) navigate(`/bus/${busId}`)

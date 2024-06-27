@@ -33,7 +33,7 @@ function OneBusiness() {
 
     // const {setModalContent} = useModal();
 
-    console.log('BUSINESS -------------> ', bus)
+    // console.log('BUSINESS -------------> ', bus)
     // console.log('REVIEWS -------------->', reviews)
     // console.log('USER ---------------->', sessionUser)
     // console.log('IMAGES -------------->', images)

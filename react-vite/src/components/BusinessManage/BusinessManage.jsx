@@ -10,7 +10,7 @@ function BusinessManage() {
   const navigate = useNavigate()
   const businessList = useSelector(state => state.businesses?.currentBusinesses?.businesses)
 
-  console.log(businessList)
+  // console.log(businessList)
 
   const [isLoaded, setIsLoaded] = useState(false)
 
