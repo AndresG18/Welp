@@ -12,27 +12,28 @@ def authorize(owner_id):
 
 @business_routes.route('')
 def get_all():
-    page = request.args.get('page', type=int)
-    size = request.args.get('size', type=int)
-    name = request.args.get('name', type=str)
-    location = request.args.get('location', type=str)
-    price = request.args.get('price')
-    category = request.args.get('category')
+    # page = request.args.get('page', type=int)
+    # size = request.args.get('size', type=int)
+    # name = request.args.get('name', type=str)
+    # location = request.args.get('location', type=str)
+    # price = request.args.get('price')
+    # category = request.args.get('category')
 
-    query = Business.query
+    # query = Business.query
 
-    if name:
-        query = query.filter(Business.name.ilike(f'%{name}%'))
-    if location:
-        query = query.filter((Business.city + ', ' + Business.state).ilike(f'%{location}%'))
-    if price:
-        query = query.filter_by(price=price)
-    if category:
-        query = query.filter_by(category_id=category)
+    # if name:
+    #     query = query.filter(Business.name.ilike(f'%{name}%'))
+    # if location:
+    #     query = query.filter((Business.city + ', ' + Business.state).ilike(f'%{location}%'))
+    # if price:
+    #     query = query.filter_by(price=price)
+    # if category:
+    #     query = query.filter_by(category_id=category)
 
-    bizs = query.paginate(page=page, per_page=size, error_out=False)
+    # bizs = query.paginate(page=page, per_page=size, error_out=False)
+    bizs = Business.query.all()
 
-    return {'businesses': [bus.to_dict() for bus in bizs.items], 'page': page, 'size': size, 'total': bizs.total}
+    return {'businesses': [bus.to_dict() for bus in bizs]}
 
 @business_routes.route('/current')
 @login_required
