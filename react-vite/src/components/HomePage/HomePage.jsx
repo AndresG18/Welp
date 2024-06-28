@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { useDispatch } from "react-redux";
+import { useSelector } from 'react-redux';
 import image1 from './photo1.jpg'
 import image2 from './photo2.jpg'
 import image3 from './photo3.jpg'
@@ -15,7 +15,7 @@ export default function HomePage() {
   const navigate = useNavigate()
   const [backImg, setBackImg] = useState(0)
 
-
+  const user = useSelector(state=>state.session.user)
   useEffect(() => {
     const transition = setInterval(() => {
       setBackImg((prev) => ++prev % backImage.length)
@@ -25,6 +25,9 @@ export default function HomePage() {
       clearInterval(transition)
     }
   }, []);
+  useEffect(()=>{
+    if(user)navigate('/bus')
+  },[user])
 
   return (
     <div className="home">
