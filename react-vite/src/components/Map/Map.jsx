@@ -9,9 +9,9 @@ const containerStyle = {
 const Map = ({ latitude, longitude }) => {
   const mapRef = useRef(null);
 
-const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
-
+  
   useEffect(() => {
+    const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
     const loader = new Loader({
       apiKey: apiKey,
       version: 'weekly',
