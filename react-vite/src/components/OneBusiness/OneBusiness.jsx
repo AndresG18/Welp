@@ -184,9 +184,9 @@ function OneBusiness() {
                             <div className="bus-description">
                                 <h2 className="description-title">From this business</h2>
                                 <p className="description-text">"{bus.business.description}"</p>
-                            {/* <div className="map-container">
+                            <div className="map-container">
                                 <Map latitude={bus.business.latitude} longitude={bus.business.longitude} />
-                            </div> */}
+                            </div>
                             </div>
                             <div className="info-box">
                                 <p className="info-box-1"> <FaStoreAlt /> {bus.business.category_name}</p>
