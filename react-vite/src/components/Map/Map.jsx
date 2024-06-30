@@ -11,9 +11,8 @@ const Map = ({ latitude, longitude }) => {
 
   
   useEffect(() => {
-    const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
     const loader = new Loader({
-      apiKey: apiKey,
+      apiKey: import.meta.env.VITE_GOOGLE_API_KEY,
       version: 'weekly',
       libraries: ['places']
     });
