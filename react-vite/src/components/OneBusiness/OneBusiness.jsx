@@ -16,7 +16,7 @@ import { FaStoreAlt } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaAddressBook } from "react-icons/fa";
 import { FaLocationArrow } from "react-icons/fa";
-// import Map from "../Map/Map";
+import Map from "../Map/Map";
 
 function OneBusiness() {
     const [isLoaded, setIsLoaded] = useState(false);

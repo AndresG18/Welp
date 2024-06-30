@@ -9,9 +9,9 @@
 // const Map = ({ latitude, longitude }) => {
 //   const mapRef = useRef(null);
 
+// const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
+
 //   useEffect(() => {
-//     const apiKey = import.meta.env.GOOGLE_API_KEY;
-//     console.log(apiKey)
 //     const loader = new Loader({
 //       apiKey: apiKey,
 //       version: 'weekly',
@@ -25,7 +25,7 @@
 //         zoom: 16
 //       });
 
-//       new google.maps.marker.AdvancedMarkerElement({
+//       new google.maps.Marker({
 //         map: map,
 //         position: { lat: parseFloat(latitude), lng: parseFloat(longitude) }
 //       });
