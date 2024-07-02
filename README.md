@@ -144,7 +144,7 @@ __.env__ file. As you work to further develop your project, you may need to add
 more environment variables to your local __.env__ file. Make sure you add these
 environment variables to the Render GUI as well for the next deployment.
 
-### Deploy
+## Deploy
 
 Now you are finally ready to deploy! Click "Create Web Service" to deploy your
 project. The deployment process will likely take about 10-15 minutes if
