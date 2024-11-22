@@ -11,6 +11,7 @@ import BusinessManage from '../components/BusinessManage';
 import UpdateBusiness from '../components/UpdateBusiness';
 import UpdateReview from '../components/UpdateReview/UpdateReview';
 import BusinessImageForm from '../components/BusImageForm/BusImageForm';
+import GiftChooser from '../components/GiftChooser/GIftChooser';
 export const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
       {
         path: "/bus/:busId/images/new",
         element: < BusinessImageForm />
+      },
+      {
+        path: "/gift",
+        element: < GiftChooser />
       },
       {
         path: "*",

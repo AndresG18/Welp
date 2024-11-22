@@ -1,0 +1,167 @@
+/* Full-Screen Container Styles */
+.gift-chooser {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #ffe4e1, #ffb6c1);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  /* Heading Styles */
+  .gift-chooser h1 {
+    font-size: 3em;
+    color: #ff69b4;
+    margin-bottom: 20px;
+    text-shadow: 0 3px 8px rgba(255, 105, 180, 0.6);
+    animation: fade-in 1.5s ease-in-out;
+  }
+  
+  /* Gift Selection Buttons */
+  .options h2 {
+    font-size: 2em;
+    color: #ff1493;
+    margin-bottom: 25px;
+    animation: fade-in 1.5s ease-in-out;
+  }
+  
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .button-group button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+  }
+  
+  .button-group button:hover {
+    background-color: #ff1493;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
+  }
+  
+  .button-group button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(255, 105, 180, 0.3);
+  }
+  
+  /* Celebration Styles */
+  .celebration {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .celebration-message {
+    font-size: 2.5em;
+    color: #ff4500;
+    margin-bottom: 20px;
+    text-shadow: 0 3px 10px rgba(255, 69, 0, 0.5);
+    animation: bounce 1.5s infinite ease-in-out;
+  }
+  
+  .spinny-circle {
+    font-size: 3em;
+    margin: 20px auto;
+    animation: spin 2s infinite linear;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Pumping Heart Styles */
+  .final {
+    margin-top: 30px;
+  }
+  
+  .heart {
+    width: 150px;
+    margin: 20px auto;
+    display: block;
+    animation: pulse 1s infinite ease-in-out;
+  }
+  
+  .love-message {
+    font-size: 3.5em;
+    color: #ff69b4;
+    margin-top: 20px;
+    text-shadow: 0 5px 15px rgba(255, 105, 180, 0.7);
+    animation: fade-in 2s ease-in-out;
+  }
+  
+  /* Next Button Styles */
+  .next-button {
+    margin-top: 30px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+  }
+  
+  .next-button:hover {
+    background-color: #45a049;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.6);
+  }
+  
+  .next-button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+  }
+  
+  /* Keyframes */
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
